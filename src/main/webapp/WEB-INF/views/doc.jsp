@@ -38,10 +38,6 @@ table:hover {
 }
 
 
-button:hover {
-	opacity: 0.8;
-}
-
 #mydiv {
 	width: 1200px;
 	padding: 10px;
@@ -72,20 +68,24 @@ button:hover {
 		id="mydiv">
 		<table>
 			<tr>
-				<td align="left"><div>
+				<td align="left">
+				    <div>
 						<font color="black"
 							style="font-family: sans-serif; font-size: 15px;">&nbsp&nbsp&nbspUPLOAD
 							DOCUMENTS</font>
-					</div></td>
+					</div>
+				</td>
 				<td></td>
 				<td align="right">
 					<!-- Button trigger modal -->
 
 					<div class=" container"
-						style="position: absolute; left: 35px; o; top: -3px;">
-						<button type="button" data-toggle="modal"
-							data-target="#exampleModal" style="background-color: #42B5F4;">
-							View Documents</button>
+						style="position: absolute; left: 88%;top:0px;  width: 6%;">
+						<button   data-toggle="modal" style="    background-color: white;
+                                                                 border: 0px;"
+							data-target="#exampleModal" >
+							 <img src="../images/folder.png" style="width: 140%;"></img>
+							 </button>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="exampleModal" tabindex="-1"
@@ -158,7 +158,8 @@ button:hover {
 							action="/uploadFiles" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only image, png type)</p></td>
-					<td><button type="submit">Upload</button>
+					<td><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:134%;border-radius:3px; right: 43%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
+
 						</form></td>
 				</tr>
 
@@ -170,7 +171,7 @@ button:hover {
 							action="/uploadFiles" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only .pdf type)</p></td>
-					<td><button type="submit">Upload</button>
+					<td><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:134%;border-radius:3px; right: 43%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -182,7 +183,7 @@ button:hover {
 							action="/uploadFiles" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only .pdf type)</p></td>
-					<td><button type="submit">Upload</button>
+					<td><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:134%;border-radius:3px; right: 43%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -193,7 +194,7 @@ button:hover {
 							action="/uploadFiles" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only .pdf type)</p></td>
-					<td><button type="submit">Upload</button>
+					<td><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:134%;border-radius:3px; right: 43%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -205,7 +206,7 @@ button:hover {
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only .pdf type and scan copy
 								both side)</p></td>
-					<td><button type="submit">Upload</button>
+					<td><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:134%;border-radius:3px; right: 43%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -216,7 +217,7 @@ button:hover {
 							action="/uploadFiles" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only .pdf type and scan copy)</p></td>
-					<td><button type="submit">Upload</button>
+					<td><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:134%;border-radius:3px; right: 43%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -228,7 +229,7 @@ button:hover {
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only .pdf type. If you have
 								experience)</p></td>
-					<td><button type="submit">Upload</button>
+					<td><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:134%;border-radius:3px; right: 43%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -241,7 +242,7 @@ button:hover {
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only .pdf type.(if
 								applicable))</p></td>
-					<td><button type="submit">Upload</button>
+					<td><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:134%;border-radius:3px; right: 43%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -253,7 +254,7 @@ button:hover {
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only .pdf type.( Light bill/
 								adhar card / other any))</p></td>
-					<td><button type="submit">Upload</button>
+					<td><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:134%;border-radius:3px; right: 43%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -264,7 +265,7 @@ button:hover {
 							action="/uploadFiles" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only .pdf type)</p></td>
-					<td><button type="submit">Upload</button>
+					<td><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:134%;border-radius:3px; right: 43%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -278,7 +279,7 @@ button:hover {
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only .pdf type. (if
 								applicable))</p></td>
-					<td><button type="submit">Upload</button>
+					<td><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:134%;border-radius:3px; right: 43%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -290,7 +291,7 @@ button:hover {
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only .pdf type. (Front and
 								back page))</p></td>
-					<td><button type="submit">Upload</button>
+					<td><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:134%;border-radius:3px; right: 43%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -301,7 +302,7 @@ button:hover {
 							action="/uploadFiles" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only .pdf type)</p></td>
-					<td><button type="submit">Upload</button>
+					<td><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:134%;border-radius:3px; right: 43%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 

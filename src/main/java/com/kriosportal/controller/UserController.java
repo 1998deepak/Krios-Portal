@@ -211,6 +211,8 @@ public class UserController {
 		user.setUserName(user3.getUserName());
 		user.setPassword(user3.getPassword());
 		user.setUserid(userId);
+		List<Roles> userRoles = roleService.getUserRoles(userId);
+		user.setRoles(userRoles);
 		userservice.updateUser(user);
 		mv = new ModelAndView("userForm2");
 		return mv;

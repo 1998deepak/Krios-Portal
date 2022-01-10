@@ -28,5 +28,8 @@ public interface RolesRepository extends JpaRepository<Roles, Integer> {
 	
 	@Query(value = "SELECT * FROM  roles WHERE roleName = ?", nativeQuery = true)
 	public List<Roles> findByName(String roleName);
+	
+	@Query(value = "SELECT * from roles,userrole WHERE roles.roleId= userrole.roleId AND usersId = ?",nativeQuery = true)
+	public List<Roles> findByUserId(int userId);
 
 }

@@ -264,13 +264,22 @@ public class UserServiceImpl implements UserService {
 						m.addRecipient(Message.RecipientType.TO, new InternetAddress(mailTo));
 
 						// adding subject to message
-						m.setSubject("Remainder from Krios ISPL");
+						String subject=user.getClientCompanyName()+"Time Sheet_"+month+year;
+						m.setSubject(subject);
 
 						// adding text to message
 						// m.setText(message);
 						String body = "<html><body>Dear " + user.getFirstName() + " ,<br><br>" + "Request you to submit "
 								+ month +" "+ year +" "+user.getClientCompanyName()+" "+"timesheet to us for further processing." + "<br><br>Feel free to reach us, in case of any queries.<br><br>Thanks & Regards,"
-								+ "<br> Finance Team</body></html>";
+								+ "<br> Thanks & Regards,\r\n"
+								+ "Hiral Mehta\r\n"
+								+ "Accounts and Finance Head\r\n"
+								+ "________________________________________\r\n"
+								+ " \r\n"
+								+ "KRIOS Info Solutions Pvt. Ltd.\r\n"
+								+ "B-604, Teerth Technospace, Baner, Pune 411045\r\n"
+								+ "Mobile: +91 9175999751\r\n"
+								+ "Email: hiral.mehta@kriosispl.com | http://kriosispl.com</body></html>";
 						m.setContent(body, "text/html");
 
 						// send

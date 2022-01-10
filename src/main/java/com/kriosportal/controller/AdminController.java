@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kriosportal.bean.UserBean;
 import com.kriosportal.entity.Docs;
+import com.kriosportal.entity.Roles;
 import com.kriosportal.entity.User;
 import com.kriosportal.mapper.UserMapper;
 import com.kriosportal.service.DocumentsService;
@@ -146,6 +147,8 @@ public class AdminController {
 		user.setUserName(user3.getUserName());
 		user.setPassword(user3.getPassword());
 		user.setUserid(updateUserId);
+		List<Roles> userRoles = roleService.getUserRoles(updateUserId);
+		user.setRoles(userRoles);
 		userservice.updateUser(user);
 		mv = new ModelAndView("updateForm");
 		mv.addObject("message", message);

@@ -22,4 +22,6 @@ public interface RoleService {
 	public List<RolesBean> fetchRoleList();
 	
 	public Roles findByRoleName(String roleName);
+	
+	public List<Roles> getUserRoles(int userId);
 }

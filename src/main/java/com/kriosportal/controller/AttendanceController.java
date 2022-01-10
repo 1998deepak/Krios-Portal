@@ -55,7 +55,7 @@ public class AttendanceController {
 		for (MultipartFile file : files) {
 			attendanceSheetService.saveFile(file, attendanceSheetBean, user);
 		}
-		List<AttendanceSheet> sheets = attendanceSheetService.getSheetByuserIdFk(userIdfk);	
+		List<AttendanceSheet> sheets = attendanceSheetService.getSheetByuserIdFk(userIdfk);
 		m.addAttribute("sheets", sheets);
 		String message = "Document uploaded Sucesfully";
 		mv = new ModelAndView("AttendanceSheet");
@@ -64,25 +64,25 @@ public class AttendanceController {
 	}
 
 	// API to download files that exist in database
-		@GetMapping("/downloadSheet/{fileId}")
-		public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable Integer fileId){
-			AttendanceSheet sheet = attendanceSheetService.getSheets(fileId).get();
-			return ResponseEntity.ok()
-					.contentType(MediaType.parseMediaType(sheet.getSheetType()))
-					.header(HttpHeaders.CONTENT_DISPOSITION,"attachment:filename=\""+sheet.getSheetName()+"\"")
-					.body(new ByteArrayResource(sheet.getSheet()));
-		}
-		
-		// method to delete document
-			@RequestMapping(value = "/deleteSheet/{sheetId}")
-			public ModelAndView deleteDoc(@PathVariable(name = "sheetId") int sheetId, ModelAndView mv, Model m,HttpServletRequest request) throws IOException {
-				String message ="Document Deleted Successfully";
-				attendanceSheetService.deleteAttendanceSheet(sheetId);
-				int userIdfk=(int) request.getSession().getAttribute("userId");
-				List<AttendanceSheet> sheets = attendanceSheetService.getSheetByuserIdFk(userIdfk);
-				mv = new ModelAndView("AttendanceSheet");
-				mv.addObject("message1", message);
-				m.addAttribute("sheets", sheets);
-				return mv;
-			}
+	@GetMapping("/downloadSheet/{fileId}")
+	public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable Integer fileId) {
+		AttendanceSheet sheet = attendanceSheetService.getSheets(fileId).get();
+		return ResponseEntity.ok().contentType(MediaType.parseMediaType(sheet.getSheetType()))
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment:filename=\"" + sheet.getSheetName() + "\"")
+				.body(new ByteArrayResource(sheet.getSheet()));
+	}
+
+	// method to delete document
+	@RequestMapping(value = "/deleteSheet/{sheetId}")
+	public ModelAndView deleteDoc(@PathVariable(name = "sheetId") int sheetId, ModelAndView mv, Model m,
+			HttpServletRequest request) throws IOException {
+		String message = "Document Deleted Successfully";
+		attendanceSheetService.deleteAttendanceSheet(sheetId);
+		int userIdfk = (int) request.getSession().getAttribute("userId");
+		List<AttendanceSheet> sheets = attendanceSheetService.getSheetByuserIdFk(userIdfk);
+		mv = new ModelAndView("AttendanceSheet");
+		mv.addObject("message1", message);
+		m.addAttribute("sheets", sheets);
+		return mv;
+	}
 }

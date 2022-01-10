@@ -37,19 +37,7 @@ table:hover {
 	background-color: #E8E8E8;
 }
 
-button {
-	background-color: #34AB53;
-	color: white;
-	padding: 7px 12px;
-	margin: 8px 0;
-	border: none;
-	cursor: pointer;
-	border-radius: 10px 10px 10px 10px;
-}
 
-button:hover {
-	opacity: 0.8;
-}
 
 #mydiv {
 	width: 1200px;
@@ -80,27 +68,31 @@ button:hover {
 		id="mydiv">
 		<table>
 			<tr>
-				<td align="left"><div>
+				<td align="left">
+				<div>
 						<font color="black"
 							style="font-family: sans-serif; font-size: 15px;">&nbsp&nbsp&nbspUPLOAD
 							ATTENDANCE SHEET</font>
-					</div></td>
+				</div>
+				</td>
 				<td></td>
 				<td align="right">
 					<!-- Button trigger modal -->
 
 					<div class=" container"
-						style="position: absolute; left: 35px; o; top: -3px;">
-						<button type="button" data-toggle="modal"
-							data-target="#exampleModal" style="background-color: #42B5F4;">
-							View Documents</button>
-					</div>
+                    						style="position: absolute; left: 88%;top:0px;  width: 6%;">
+                    						<button   data-toggle="modal" style="    background-color: white;
+                                                                                     border: 0px;"
+                    							data-target="#exampleModal" >
+                    							 <img src="../images/folder.png" style="width: 140%;"></img>
+                    							 </button>
+                    					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="exampleModal" tabindex="-1"
 						role="dialog" aria-labelledby="exampleModalLabel"
 						aria-hidden="true">
 						<div class="modal-dialog" role="document">
-							<div class="modal-content">
+							<div class="modal-content" style="margin-top: 21%;">
 								<div class="modal-header" align="left">
 									<h4 class="modal-title" id="exampleModalLabel">ATTENDANCE
 										SHEET</h4>
@@ -163,7 +155,7 @@ button:hover {
 							action="/uploadSheet" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit">Upload</button>
+					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -175,7 +167,7 @@ button:hover {
 							action="/uploadSheet" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit">Upload</button>
+					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -187,7 +179,7 @@ button:hover {
 							action="/uploadSheet" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit">Upload</button>
+					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -198,7 +190,7 @@ button:hover {
 							action="/uploadSheet" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit">Upload</button>
+					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -209,7 +201,7 @@ button:hover {
 							action="/uploadSheet" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit">Upload</button>
+					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -220,7 +212,7 @@ button:hover {
 							action="/uploadSheet" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit">Upload</button>
+					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -231,7 +223,7 @@ button:hover {
 							action="/uploadSheet" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit">Upload</button>
+					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -243,7 +235,7 @@ button:hover {
 							action="/uploadSheet" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit">Upload</button>
+					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -254,7 +246,7 @@ button:hover {
 							action="/uploadSheet" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit">Upload</button>
+					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -265,7 +257,7 @@ button:hover {
 							action="/uploadSheet" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit">Upload</button>
+					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -278,7 +270,7 @@ button:hover {
 							action="/uploadSheet" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit">Upload</button>
+					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 
@@ -289,7 +281,7 @@ button:hover {
 							action="/uploadSheet" encType="multipart/form-data">
 							<input type="file" name="files" multiple required />
 							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit">Upload</button>
+					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
 						</form></td>
 				</tr>
 			</tbody>

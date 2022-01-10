@@ -1,5 +1,6 @@
 package com.kriosportal.serviceimpl;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
@@ -50,8 +51,8 @@ public class AttendanceSheetServiceImpl implements AttendanceSheetService{
 			attendanceSheetBean.setSheetType(file.getContentType());
 			attendanceSheetBean.setSheet(file.getBytes());
 			attendanceSheetBean.setUploadDate(new Date());
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-M-dd");
-			String date = formatter.format(attendanceSheetBean.getUploadDate());
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			String date = formatter.format(new Date());
 			LocalDate currentDate = LocalDate.parse(date);
 
 			// Get month from date
@@ -85,5 +86,7 @@ public class AttendanceSheetServiceImpl implements AttendanceSheetService{
 		List<AttendanceSheet> attendanceSheets = attendanceSheetRepository.getAttendanceSheetByDate(date);
 		return attendanceSheets;
 	}
+	
+	
 
 }

@@ -55,4 +55,10 @@ public class RoleServiceImpl implements RoleService {
 		return role;
 	
 	}
+	
+	@Override
+	public List<Roles> getUserRoles(int userId) {
+		// TODO Auto-generated method stub
+		return rolesRepository.findByUserId(userId);
+	}
 }

@@ -25,8 +25,7 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans'
 	rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="assets/js/Lightweight-Chart/cssCharts.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
@@ -130,19 +129,25 @@ function TriggerAlertClose() {
 			<div class="wrap-login100">
 				<form class="login100-form validate-form p-l-55 p-r-55 p-t-178"
 					action="checklogin" method="post">
-					<span class="login100-form-title">LOGIN</span> 
+					<span class="login100-form-title">LOGIN</span>
+
+
 					<p style=" position: absolute !important; margin-top: -45px;"><c:set var = "message" scope="page" value = "${message}"/>
       <c:if test = "${not empty message}">
-<div class="alert alert-success" role="alert" style="width: 300px;  position: absolute !important; margin-top: -36px;">
-${message}
+<div class="alert" role="alert" style="position: absolute !important;color:green;margin-top:-58px;margin-left:-50px;"><b>
+${message}</b>
 </div>
 </c:if>
 <c:set var = "wrongmessage" scope="page" value = "${wrongmessage}"/>
       <c:if test = "${not empty wrongmessage}">
-<div class="alert alert-danger" role="alert" style="width: 300px;  position: absolute !important; margin-top: -36px;">
-${wrongmessage}
+<div class="alert" role="alert" style="position: absolute !important;color:red;margin-top: -58px;margin-left: -50px;">
+<b>
+${wrongmessage}</b>
 </div>
 </c:if></p>
+
+
+
 					<div class="wrap-input100 validate-input m-b-16">
 						<select class="input100" name="roleName" required="required">
 							<option value="" selected="true" disabled="disabled">Login As</option>

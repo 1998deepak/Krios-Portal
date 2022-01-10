@@ -129,12 +129,12 @@ tr, th, td {
 		style="position: absolute; left: 169px; top: 99px; padding-top: 6px; padding-bottom: 6px;">
 		<div align="center">
 			<img class="card-img-top" src="../images/men_avatar.png"
-				alt="Card image cap" height="60%" width="60%">
+				alt="Card image cap" height="60%"  width="60%" style="border-radius:152px">
 			<div class="card-body">
 				<h5 class="card-title">
 					<b>${user.getFirstName()} ${user.getLastName()}</b>
 				</h5>
-				<p class="card-text"></p>
+				<p class="card-text">${user.getEmail()}</p>
 
 			</div>
 		</div>
