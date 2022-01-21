@@ -168,7 +168,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/saveUser")
-	public ModelAndView registerStudent(ModelAndView mv, @ModelAttribute("user") User user,
+	public ModelAndView registerStudent(ModelAndView mv,Model m, @ModelAttribute("user") User user,
 			@ModelAttribute("rolesBean") RolesBean rolesBean) throws Exception {
 		System.out.println("in save user api");
 		rolesBean.setRoleName("Employee");
@@ -185,7 +185,7 @@ public class UserController {
 		userservice.sendEmail(user.getEmail(), message, "Krios Employement Form");
 		userservice.saveUser(user, rolesBean);
 		String message2 = "user added sucesfully and mail sent";
-		mv.addObject(message2);
+		m.addAttribute("message2", message2);
 		mv = new ModelAndView("addUserForm");
 		return mv;
 	}

@@ -97,10 +97,12 @@ background-color:white;
 					<!-- Button trigger modal -->
 
 					<div class=" container"
-						style="position: absolute; left: 35px; o; top: -3px;">
-						<button type="button" data-toggle="modal"
-							data-target="#exampleModal" style="background-color: #42B5F4;">
-							View Documents</button>
+						style="position: absolute; left: 88%;top:0px;  width: 6%;">
+						<button   data-toggle="modal" style="    background-color: white;
+                                                                 border: 0px;"
+							data-target="#exampleModal" >
+							 <img src="../images/folder.png" style="width: 140%;"></img>
+							 </button>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="exampleModal" tabindex="-1"
