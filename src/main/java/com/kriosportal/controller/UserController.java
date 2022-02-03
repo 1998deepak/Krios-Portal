@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import javax.mail.Flags.Flag;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -194,16 +195,22 @@ public class UserController {
 	@RequestMapping(value = "/editUser")
 	public ModelAndView editUser(ModelAndView mv, Model m, HttpServletRequest request) {
 		int userId = (int) request.getSession().getAttribute("userId");
+		System.out.println(userId);
+		Boolean statusBoolean=true;
 		UserBean user = userservice.getById(userId);
 		mv = new ModelAndView("userForm2");
 		m.addAttribute("user", user);
+		if(user.getUserStatus() < 2)
+			statusBoolean=false;
+		 m.addAttribute("status", statusBoolean);
 		return mv;
 	}
 
 	// API to update user
 	@PostMapping(value = "/updateUser")
-	public ModelAndView updateUser(@ModelAttribute("user") User user, ModelAndView mv, HttpServletRequest request)
+	public ModelAndView updateUser(@ModelAttribute("user") User user, ModelAndView mv, HttpServletRequest request,Model m)
 			throws NumberFormatException, IOException {
+		Boolean statusBoolean=true;
 		int userId = (int) request.getSession().getAttribute("userId");
 
 		UserBean user2 = userservice.getById(userId);
@@ -212,10 +219,19 @@ public class UserController {
 		user.setPassword(user3.getPassword());
 		user.setUserid(userId);
 		List<Roles> userRoles = roleService.getUserRoles(userId);
-		user.setRoles(userRoles);
-		userservice.updateUser(user);
-		mv = new ModelAndView("userForm2");
-		return mv;
+		user.setRoles(userRoles);	
+		System.out.println("Flag : "+user3.getUserStatus());
+		if(user3.getUserStatus() < 2)
+			statusBoolean=false;
+		System.out.println(statusBoolean);
+		  user.setUserStatus(user3.getUserStatus()+1);
+		  userservice.updateUser(user);
+		 m.addAttribute("status", statusBoolean);
+		  UserBean user4 = userservice.getById(userId);
+			mv = new ModelAndView("userForm2");
+			m.addAttribute("user", user4);
+		  mv = new ModelAndView("userForm2");
+		 return mv;
 	}
 
 	@GetMapping("/export")

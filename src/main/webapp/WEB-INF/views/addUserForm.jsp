@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,20 +17,18 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link href="assets/css/bootstrap.css" rel="stylesheet" />
 <link rel="stylesheet" href="./css/adduserform.css">
-<!--New Success Full design css-->
- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-
-
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style>
 body {
 	background-color: #E8E8E8;
 }
 
+
 #mydiv {
-	width: 70%;
- 	border: 0.5px;
+	width: 821px;
+	padding: 10px;
+	border: 0.5px;
 	-webkit-box-shadow: 0 30px 60px 0;
 	margin: 20px;
 	-webkit-border-radius: 10px 10px 10px 10px;
@@ -40,16 +36,19 @@ body {
 	background: #fff;
 	padding: 30px;
 	position: relative;
+	padding: 0px;
 	-webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
 	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
 }
 
 table {
-
+	
 }
 
+th, td {
+	padding-left: 9px
+}
 </style>
-
 <body>
 
 	<script>
@@ -85,76 +84,73 @@ table {
 				return true;
 			}
 		}
-		$(function () {
-            TriggerAlertClose();
-        });
-
-        function TriggerAlertClose() {
-            window.setTimeout(function () {
-                $(".alert1").fadeTo(1000, 0).slideUp(1000, function () {
-                    $(this).remove();
-                });
-            }, 5000);
-        }
 	</script>
 	<div>
 		<jsp:include page="./components/header2.jsp" />
 	</div>
-
+	<font color="green">${message2}</font>
 	<br>
 	<div id="mydiv"
-		style="position: relative; left: 179px; top: 41px; padding-top: 9px; padding-bottom: 12px;">
+		style="position: absolute; left: 260px; top: 60px; padding-top: 6px; padding-bottom: 6px;">
 		<font color="black" style="font-family: sans-serif; font-size: 15px;">&nbsp;
 			ADD EMPLOYEE</font>
-		<font color="green" class="alert1" role="alert"  style="font-family: sans-serif; font-size: 20px;float:right;margin-right:3%;">${message2}</font>
 	</div>
 
 	<div id="mydiv"
-		style="background-color: white; position: relative; left: 179px; top: 25px;padding-left: 59px;padding-top: 1px;">
+		style="background-color: white; position: absolute; left: 260px; top: 97px;">
 		<form action="/saveUser" method="post">
 			<br>
 			<table>
 				<tr class="row">
-					<td  ><b>First Name </b></td>
+					<td align="left"><b>First Name </b>
+					<i class="fa fa-asterisk " style="font-size:8px;color:red;position: absolute;margin-left:3px;"></i></td>
 					<td align="left"><input type="text" class="fadeIn third"
 						placeholder="Enter First Name" name="firstName"
-						style="width: 240px; margin-right: 16px;" required="required"></td>
-					<td ><b  >User Name </b></td>
+						style="width: 240px; margin-right: 16px;"  required="required"></td>
+					<td ><b>User Name </b>
+					<i class="fa fa-asterisk " style="font-size:8px;color:red;position: absolute;margin-left:3px;"></td>
 					<td align="left"><input type="text" class="fadeIn fourth"
-						name="userName" placeholder="UserName" style="width: 240px;" required="required"></td>
+						name="userName" placeholder="UserName" id="userName"  style="width: 240px;" required="required"></td>
 				</tr>
-				<tr class="row" >
-					<td style="padding-right: 42px;"><b>Middle Name</b></td>
+				<tr class="row">
+					<td align="left"><b>Middle Name </b>
+					<i class="fa fa-asterisk " style="font-size:8px;color:red;position: absolute;margin-left:3px;"></td>
 					<td><input type="text" class="fadeIn second"
 						placeholder="Enter Middle Name" name="middleName"
 						style="width: 240px; margin-right: 16px;"></td>
-					<td ><b>Email </b></td>
-					<td><input type="text" class="fadeIn fifth" name="email"
-						placeholder="Email"
-						pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-						title=" Invalid Email" style="width: 240px;"></td>
-				</tr>
-				<tr class="row">
-					<td ><b >Last Name </b></td>
+					<td><b>Last Name </b>
+					<i class="fa fa-asterisk " style="font-size:8px;color:red;position: absolute;"></td>
 					<td><input type="text" class="fadeIn first"
-						placeholder="Enter Last Name" name="lastName"
-						style="width: 240px; margin-right: 16px;" required="required"></td>
-					<td ><b>Mobile No. </b></td>
-					<td><input type="text" class="fadeIn six" name="mobile"
-						placeholder="Mobile No." pattern=".{10}"
-						title="Mobile No is Must min 10 digit" style="width: 240px;" required="required"></td>
+					placeholder="Enter Last Name" name="lastName"
+					style="width: 240px; margin-right: 16px;" required="required"></td>
 				</tr>
 				<tr class="row">
-					<td ><b>Password </b></td>
+					<td align="left"><b>Email </b>
+					<i class="fa fa-asterisk " style="font-size:8px;color:red;position: absolute;margin-left:3px;"></td>
+						<td><input type="text" class="fadeIn fifth" name="email"
+							placeholder="Email" onclick="getPassword()"
+							pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+							title=" Invalid Email" style="width: 240px;"></td>
+						
+					<td ><b>Password </b>
+					<i class="fa fa-asterisk " style="font-size:8px;color:red;position: absolute;margin-left:3px;"></td>
 					<td><input type="text" class="fadeIn fourth" name="password"
-						id="pass" placeholder="Create Password"
-						style="width: 240px; margin-right: 16px;" required="required"></td>
-						<td ><b>Location </b></td>
+					id="pass" placeholder="Create Password"
+					style="width: 240px; margin-right: 16px;" required="required"></td
+				</tr>
+				<tr class="row">
+					<td align="left"><b>Mobile No. </b>
+					<i class="fa fa-asterisk " style="font-size:8px;color:red;position: absolute;margin-left:3px;"></td>	
+						<td><input type="text" class="fadeIn six" name="mobile"
+							placeholder="Mobile No." pattern=".{10}"
+							title="Mobile No is Must min 10 digit" style="width: 240px;" required="required"></td>
+						<td ><b>Location </b>
+						<i class="fa fa-asterisk " style="font-size:8px;color:red;position: absolute;margin-left:3px;"></td>
 					<td><input type="text" class="fadeIn six" name="location"
 						placeholder="Location" style="width: 240px;"></td>
 				</tr>
 				<tr class="row">
-					<td  ><b>Lateral Yearly</b></td>
+					<td align="left"><b>Lateral Yearly</b></td>
 					<td><input type="text" class="fadeIn fourth" name="yearlyPackage"
 						id="pass" placeholder="Yearly Package"
 						style="width: 240px; margin-right: 16px;"></td>
@@ -163,7 +159,7 @@ table {
 						placeholder="Monthly Salary" style="width: 240px;"></td>
 				</tr>
 				<tr class="row">
-					<td  ><b>KTP Yearly</b></td>
+					<td align="left"><b>KTP Yearly</b></td>
 					<td><input type="text" class="fadeIn fourth" name="yearlyPackageKTP"
 						id="pass" placeholder="Yearly Package"
 						style="width: 240px; margin-right: 16px;"></td>
@@ -176,10 +172,11 @@ table {
 				</tr>
 				<tr class="row">
 					<td colspan="4"><input type="submit" class="fadeIn fourth"
-						onclick="getPassword()"  class="trigger-btn" data-toggle="modal" value="Submit"
-						style="margin-left: 41%; margin-top: 16px;"> <input
+						 value="Submit"
+						style="margin-left: 35%; margin-top: 16px;"> <input
 						type="reset" class="fadeIn fourth" value="Reset"
 						style="background-color: #DB4437;"></td>
+					
 				</tr>
 			</table>
 		</form>
@@ -202,6 +199,30 @@ table {
 			document.getElementById("pass").value = password
 		}
 	</script>
+	
+	
+	
+	
+	
+	<script type="text/javascript">
+	function createUsername()  {
+		 var firstName = $('#mydiv input[name=firstName]').val().substring(0,1).toUpperCase();
+		 var middleName = $('#mydiv input[name=middleName]').val().substring(0,1).toUpperCase();
+		var lastName = $('#mydiv input[name=lastName]').val().toUpperCase();
+		  var userName = firstName +middleName+ lastName;
+		 $('#mydiv input[name=userName]').val(userName);
+		}
 
+		$('#mydiv input[name=firstName]').on('keyup', createUsername);
+		$('#mydiv input[name=middleName]').on('keyup', createUsername);
+		$('#mydiv input[name=lastName]').on('keyup', createUsername);
+	</script>
+	
+	<div></div>
+	<footer>
+		<div class="container">
+			<jsp:include page="./components/footer.jsp" />
+		</div>
+	</footer>
 </body>
 </html>

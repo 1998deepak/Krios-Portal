@@ -1,9 +1,14 @@
 package com.kriosportal.bean;
 
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+
 import com.kriosportal.entity.Roles;
+
+
 
 public class UserBean {
 	private Integer userid;
@@ -32,7 +37,7 @@ public class UserBean {
 
 	private String presentAddress;
 
-	private Integer telephone;
+	private String  telephone;
 
 	private Long mobile;
 
@@ -40,9 +45,86 @@ public class UserBean {
 
 	private String permanentAddress;
 
-	private Integer permanentTelephone;
+	private String  permanentTelephone;
+	
+	private Integer userStatus;
 
+	public Integer getUserStatus() {
+		return userStatus;
+	}
+
+	public void setUserStatus(Integer userStatus) {
+		this.userStatus = userStatus;
+	}
+
+	// Admin 
+	@Column(name = "location")
+	private String location;
+	
+	@Column(name = "yearlyPackage")
+	private String yearlyPackage;
+	
+	@Column(name = "monthlySalary")
+	private String monthlySalary;
+	
+	@Column(name = "yearlyPackageKTP")
+	private String yearlyPackageKTP;
+	
+	@Column(name = "monthlySalaryKTP")
+	private String monthlySalaryKTP;
+	
+	@Column(name = "empStatus")
+	private String empStatus;
+	
 	// relative in krios
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getYearlyPackage() {
+		return yearlyPackage;
+	}
+
+	public void setYearlyPackage(String yearlyPackage) {
+		this.yearlyPackage = yearlyPackage;
+	}
+
+	public String getMonthlySalary() {
+		return monthlySalary;
+	}
+
+	public void setMonthlySalary(String monthlySalary) {
+		this.monthlySalary = monthlySalary;
+	}
+
+	public String getYearlyPackageKTP() {
+		return yearlyPackageKTP;
+	}
+
+	public void setYearlyPackageKTP(String yearlyPackageKTP) {
+		this.yearlyPackageKTP = yearlyPackageKTP;
+	}
+
+	public String getMonthlySalaryKTP() {
+		return monthlySalaryKTP;
+	}
+
+	public void setMonthlySalaryKTP(String monthlySalaryKTP) {
+		this.monthlySalaryKTP = monthlySalaryKTP;
+	}
+
+	public String getEmpStatus() {
+		return empStatus;
+	}
+
+	public void setEmpStatus(String empStatus) {
+		this.empStatus = empStatus;
+	}
 
 	private String relativeName;
 
@@ -52,7 +134,7 @@ public class UserBean {
 
 	// ID Proof details //
 
-	private Integer adharNumber;
+	private BigInteger adharNumber;
 
 	private String panNumber;
 
@@ -68,9 +150,9 @@ public class UserBean {
 
 	private String ifscCode;
 
-	private Long pfAccountNumber;
+	private String pfAccountNumber;
 
-	private Integer uanNumber;
+	private String uanNumber;
 
 	// Family details //
 	// Father//
@@ -139,15 +221,15 @@ public class UserBean {
 
 	private String schoolName;
 
-	private Integer periodFrom;
+	private String periodFrom;
 
-	private Integer periodTo;
+	private String periodTo;
 
 	private String degreeOrDiploma;
 
 	private String specialization;
 
-	private Integer percentage;
+	private Float percentage;
 
 	private String classOrDiv;
 
@@ -155,15 +237,15 @@ public class UserBean {
 
 	private String collageName;
 
-	private Integer hscPeriodFrom;
+	private String hscPeriodFrom;
 
-	private Integer hscPeriodTo;
+	private String hscPeriodTo;
 
 	private String hscDegreeOrDiploma;
 
 	private String hscSpecialization;
 
-	private Integer hscPercentage;
+	private Float hscPercentage;
 
 	private String hscclassOrDiv;
 
@@ -171,15 +253,15 @@ public class UserBean {
 
 	private String universityName;
 
-	private Integer degreePeriodFrom;
+	private String degreePeriodFrom;
 
-	private Integer degreePeriodTo;
+	private String degreePeriodTo;
 
 	private String degreeDegreeOrDiploma;
 
 	private String degreeSpecialization;
 
-	private Integer degreePercentage;
+	private Float degreePercentage;
 
 	private String degreeClassOrDiv;
 
@@ -276,7 +358,7 @@ public class UserBean {
 
 	private String serviceTo;
 
-	private Integer drawnCTC;
+	private Float drawnCTC;
 
 	private Long emp_phone;
 
@@ -286,9 +368,9 @@ public class UserBean {
 
 	private String seniorDesignation;
 
-	private Integer currentCTC;
+	private Float currentCTC;
 
-	private Integer expectedCTC;
+	private Float expectedCTC;
 
 	private Date joinTime;
 
@@ -327,7 +409,7 @@ public class UserBean {
 
 	// Passport / Visa details //
 
-	private Integer passportNo;
+	private String passportNo;
 
 	private String issuePlace;
 
@@ -360,99 +442,45 @@ public class UserBean {
 	private Date modifyDate;
 
 	private String clientCompanyName;
-
-	private String location;
-
-	private String yearlyPackage;
-
-	private String monthlySalary;
-
-	private String yearlyPackageKTP;
-
-	private String monthlySalaryKTP;
-
-	private String empStatus;
 	
 	private List<Roles> roles;
-
+	
 	private String roleName;
-
+	
 	// getters and setters
 	public Integer getUserid() {
 		return userid;
 	}
-
+	
 	public String getRoleName() {
 		return roleName;
 	}
+
 
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
 
+
 	public List<Roles> getRoles() {
 		return roles;
 	}
+
 
 	public void setRoles(List<Roles> roles) {
 		this.roles = roles;
 	}
 
-	public String getEmpStatus() {
-		return empStatus;
-	}
-
-	public void setEmpStatus(String empStatus) {
-		this.empStatus = empStatus;
-	}
 
 	public String getClientCompanyName() {
 		return clientCompanyName;
 	}
 
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	public String getYearlyPackage() {
-		return yearlyPackage;
-	}
-
-	public void setYearlyPackage(String yearlyPackage) {
-		this.yearlyPackage = yearlyPackage;
-	}
-
-	public String getMonthlySalary() {
-		return monthlySalary;
-	}
-
-	public void setMonthlySalary(String monthlySalary) {
-		this.monthlySalary = monthlySalary;
-	}
-
-	public String getYearlyPackageKTP() {
-		return yearlyPackageKTP;
-	}
-
-	public void setYearlyPackageKTP(String yearlyPackageKTP) {
-		this.yearlyPackageKTP = yearlyPackageKTP;
-	}
-
-	public String getMonthlySalaryKTP() {
-		return monthlySalaryKTP;
-	}
-
-	public void setMonthlySalaryKTP(String monthlySalaryKTP) {
-		this.monthlySalaryKTP = monthlySalaryKTP;
-	}
 
 	public void setClientCompanyName(String clientCompanyName) {
 		this.clientCompanyName = clientCompanyName;
 	}
+
 
 	public void setUserid(Integer userid) {
 		this.userid = userid;
@@ -546,12 +574,64 @@ public class UserBean {
 		this.presentAddress = presentAddress;
 	}
 
-	public Integer getTelephone() {
+	public String getPeriodFrom() {
+		return periodFrom;
+	}
+
+	public void setPeriodFrom(String periodFrom) {
+		this.periodFrom = periodFrom;
+	}
+
+	public String getPeriodTo() {
+		return periodTo;
+	}
+
+	public void setPeriodTo(String periodTo) {
+		this.periodTo = periodTo;
+	}
+
+	public String getHscPeriodFrom() {
+		return hscPeriodFrom;
+	}
+
+	public void setHscPeriodFrom(String hscPeriodFrom) {
+		this.hscPeriodFrom = hscPeriodFrom;
+	}
+
+	public String getHscPeriodTo() {
+		return hscPeriodTo;
+	}
+
+	public void setHscPeriodTo(String hscPeriodTo) {
+		this.hscPeriodTo = hscPeriodTo;
+	}
+
+	public String getDegreePeriodFrom() {
+		return degreePeriodFrom;
+	}
+
+	public void setDegreePeriodFrom(String degreePeriodFrom) {
+		this.degreePeriodFrom = degreePeriodFrom;
+	}
+
+	public String getDegreePeriodTo() {
+		return degreePeriodTo;
+	}
+
+	public void setDegreePeriodTo(String degreePeriodTo) {
+		this.degreePeriodTo = degreePeriodTo;
+	}
+
+	public String getTelephone() {
 		return telephone;
 	}
 
-	public void setTelephone(Integer telephone) {
+	public void setTelephone(String telephone) {
 		this.telephone = telephone;
+	}
+
+	public void setPermanentTelephone(String permanentTelephone) {
+		this.permanentTelephone = permanentTelephone;
 	}
 
 	public Long getMobile() {
@@ -578,12 +658,9 @@ public class UserBean {
 		this.permanentAddress = permanentAddress;
 	}
 
-	public Integer getPermanentTelephone() {
-		return permanentTelephone;
-	}
 
-	public void setPermanentTelephone(Integer permanentTelephone) {
-		this.permanentTelephone = permanentTelephone;
+	public String getPermanentTelephone() {
+		return permanentTelephone;
 	}
 
 	public String getRelativeName() {
@@ -610,11 +687,13 @@ public class UserBean {
 		this.relativesRelationship = relativesRelationship;
 	}
 
-	public Integer getAdharNumber() {
+	
+
+	public BigInteger getAdharNumber() {
 		return adharNumber;
 	}
 
-	public void setAdharNumber(Integer adharNumber) {
+	public void setAdharNumber(BigInteger adharNumber) {
 		this.adharNumber = adharNumber;
 	}
 
@@ -666,19 +745,21 @@ public class UserBean {
 		this.ifscCode = ifscCode;
 	}
 
-	public Long getPfAccountNumber() {
+	
+
+	public String getPfAccountNumber() {
 		return pfAccountNumber;
 	}
 
-	public void setPfAccountNumber(Long pfAccountNumber) {
+	public void setPfAccountNumber(String pfAccountNumber) {
 		this.pfAccountNumber = pfAccountNumber;
 	}
 
-	public Integer getUanNumber() {
+	public String getUanNumber() {
 		return uanNumber;
 	}
 
-	public void setUanNumber(Integer uanNumber) {
+	public void setUanNumber(String uanNumber) {
 		this.uanNumber = uanNumber;
 	}
 
@@ -882,21 +963,9 @@ public class UserBean {
 		this.schoolName = schoolName;
 	}
 
-	public Integer getPeriodFrom() {
-		return periodFrom;
-	}
+	
 
-	public void setPeriodFrom(Integer periodFrom) {
-		this.periodFrom = periodFrom;
-	}
 
-	public Integer getPeriodTo() {
-		return periodTo;
-	}
-
-	public void setPeriodTo(Integer periodTo) {
-		this.periodTo = periodTo;
-	}
 
 	public String getDegreeOrDiploma() {
 		return degreeOrDiploma;
@@ -914,13 +983,7 @@ public class UserBean {
 		this.specialization = specialization;
 	}
 
-	public Integer getPercentage() {
-		return percentage;
-	}
-
-	public void setPercentage(Integer percentage) {
-		this.percentage = percentage;
-	}
+	
 
 	public String getClassOrDiv() {
 		return classOrDiv;
@@ -938,21 +1001,7 @@ public class UserBean {
 		this.collageName = collageName;
 	}
 
-	public Integer getHscPeriodFrom() {
-		return hscPeriodFrom;
-	}
 
-	public void setHscPeriodFrom(Integer hscPeriodFrom) {
-		this.hscPeriodFrom = hscPeriodFrom;
-	}
-
-	public Integer getHscPeriodTo() {
-		return hscPeriodTo;
-	}
-
-	public void setHscPeriodTo(Integer hscPeriodTo) {
-		this.hscPeriodTo = hscPeriodTo;
-	}
 
 	public String getHscDegreeOrDiploma() {
 		return hscDegreeOrDiploma;
@@ -970,13 +1019,7 @@ public class UserBean {
 		this.hscSpecialization = hscSpecialization;
 	}
 
-	public Integer getHscPercentage() {
-		return hscPercentage;
-	}
-
-	public void setHscPercentage(Integer hscPercentage) {
-		this.hscPercentage = hscPercentage;
-	}
+	
 
 	public String getHscclassOrDiv() {
 		return hscclassOrDiv;
@@ -994,21 +1037,8 @@ public class UserBean {
 		this.universityName = universityName;
 	}
 
-	public Integer getDegreePeriodFrom() {
-		return degreePeriodFrom;
-	}
 
-	public void setDegreePeriodFrom(Integer degreePeriodFrom) {
-		this.degreePeriodFrom = degreePeriodFrom;
-	}
 
-	public Integer getDegreePeriodTo() {
-		return degreePeriodTo;
-	}
-
-	public void setDegreePeriodTo(Integer degreePeriodTo) {
-		this.degreePeriodTo = degreePeriodTo;
-	}
 
 	public String getDegreeDegreeOrDiploma() {
 		return degreeDegreeOrDiploma;
@@ -1026,11 +1056,29 @@ public class UserBean {
 		this.degreeSpecialization = degreeSpecialization;
 	}
 
-	public Integer getDegreePercentage() {
+	
+
+	public Float getPercentage() {
+		return percentage;
+	}
+
+	public void setPercentage(Float percentage) {
+		this.percentage = percentage;
+	}
+
+	public Float getHscPercentage() {
+		return hscPercentage;
+	}
+
+	public void setHscPercentage(Float hscPercentage) {
+		this.hscPercentage = hscPercentage;
+	}
+
+	public Float getDegreePercentage() {
 		return degreePercentage;
 	}
 
-	public void setDegreePercentage(Integer degreePercentage) {
+	public void setDegreePercentage(Float degreePercentage) {
 		this.degreePercentage = degreePercentage;
 	}
 
@@ -1346,13 +1394,7 @@ public class UserBean {
 		this.serviceTo = serviceTo;
 	}
 
-	public Integer getDrawnCTC() {
-		return drawnCTC;
-	}
-
-	public void setDrawnCTC(Integer drawnCTC) {
-		this.drawnCTC = drawnCTC;
-	}
+	
 
 	public Long getEmp_phone() {
 		return emp_phone;
@@ -1386,19 +1428,31 @@ public class UserBean {
 		this.seniorDesignation = seniorDesignation;
 	}
 
-	public Integer getCurrentCTC() {
+	
+
+	
+
+	public Float getDrawnCTC() {
+		return drawnCTC;
+	}
+
+	public void setDrawnCTC(Float drawnCTC) {
+		this.drawnCTC = drawnCTC;
+	}
+
+	public Float getCurrentCTC() {
 		return currentCTC;
 	}
 
-	public void setCurrentCTC(Integer currentCTC) {
+	public void setCurrentCTC(Float currentCTC) {
 		this.currentCTC = currentCTC;
 	}
 
-	public Integer getExpectedCTC() {
+	public Float getExpectedCTC() {
 		return expectedCTC;
 	}
 
-	public void setExpectedCTC(Integer expectedCTC) {
+	public void setExpectedCTC(Float expectedCTC) {
 		this.expectedCTC = expectedCTC;
 	}
 
@@ -1522,11 +1576,13 @@ public class UserBean {
 		this.hobbies = hobbies;
 	}
 
-	public Integer getPassportNo() {
+	
+
+	public String getPassportNo() {
 		return passportNo;
 	}
 
-	public void setPassportNo(Integer passportNo) {
+	public void setPassportNo(String passportNo) {
 		this.passportNo = passportNo;
 	}
 

@@ -2,8 +2,7 @@ package com.kriosportal.bean;
 
 import java.util.Date;
 
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 
 public class DocsBean {
 	private Integer docId;

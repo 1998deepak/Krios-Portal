@@ -174,7 +174,8 @@ public class UserMapper {
 		userBean.setYearlyPackageKTP(user.getYearlyPackageKTP());
 		userBean.setMonthlySalaryKTP(user.getMonthlySalaryKTP());
 		userBean.setEmpStatus(user.getEmpStatus());
-		userBean.setRoleName(getRole(user).getRoleName());	
+		userBean.setRoleName(getRole(user).getRoleName());
+		userBean.setUserStatus(user.getUserStatus());
 		return userBean;
 	}
 	
@@ -339,6 +340,7 @@ public class UserMapper {
 		user.setYearlyPackageKTP(userBean.getYearlyPackageKTP());
 		user.setMonthlySalaryKTP(userBean.getMonthlySalaryKTP());
 		user.setEmpStatus(userBean.getEmpStatus());
+		user.setUserStatus(userBean.getUserStatus());
 		return user; 
 	}
 	

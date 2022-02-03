@@ -51,17 +51,7 @@ public class AttendanceSheetServiceImpl implements AttendanceSheetService{
 			attendanceSheetBean.setSheetType(file.getContentType());
 			attendanceSheetBean.setSheet(file.getBytes());
 			attendanceSheetBean.setUploadDate(new Date());
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			String date = formatter.format(new Date());
-			LocalDate currentDate = LocalDate.parse(date);
-
-			// Get month from date
-			Month month = currentDate.getMonth();
-
-			// Get year from date
-			int year = currentDate.getYear();
-			String sheetOf = month+" "+year;
-			attendanceSheetBean.setSheetOf(sheetOf);
+					
 			attendanceSheetBean.setModifyDate(new Date());
 			AttendanceSheet sheet = attendanceSheetMapper.mapToEntity(attendanceSheetBean, user);
 			return attendanceSheetRepository.save(sheet);

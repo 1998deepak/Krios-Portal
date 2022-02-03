@@ -1,4 +1,5 @@
 package com.kriosportal.entity;
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 /*
  * Bean class for User
- * author Deepak
+ * author Mahesh
  * Date 23/11/2021
  * version 1.0
  */
@@ -70,7 +71,7 @@ public class User{
 	private String presentAddress;
 	
 	@Column(name = "telephone")
-	private Integer telephone;
+	private String  telephone;
 	
 	@Column(name = "mobile")
 	private Long mobile;
@@ -82,7 +83,75 @@ public class User{
 	private String permanentAddress;
 	
 	@Column(name = "permanentTelephone")
-	private Integer permanentTelephone;
+	private String permanentTelephone;
+	
+	
+	@Column(name = "location")
+	private String location;
+	
+	@Column(name = "yearlyPackage")
+	private String yearlyPackage;
+	
+	@Column(name = "monthlySalary")
+	private String monthlySalary;
+	
+	@Column(name = "yearlyPackageKTP")
+	private String yearlyPackageKTP;
+	
+	@Column(name = "monthlySalaryKTP")
+	private String monthlySalaryKTP;
+	
+	@Column(name = "empStatus")
+	private String empStatus;
+	
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getYearlyPackage() {
+		return yearlyPackage;
+	}
+
+	public void setYearlyPackage(String yearlyPackage) {
+		this.yearlyPackage = yearlyPackage;
+	}
+
+	public String getMonthlySalary() {
+		return monthlySalary;
+	}
+
+	public void setMonthlySalary(String monthlySalary) {
+		this.monthlySalary = monthlySalary;
+	}
+
+	public String getYearlyPackageKTP() {
+		return yearlyPackageKTP;
+	}
+
+	public void setYearlyPackageKTP(String yearlyPackageKTP) {
+		this.yearlyPackageKTP = yearlyPackageKTP;
+	}
+
+	public String getMonthlySalaryKTP() {
+		return monthlySalaryKTP;
+	}
+
+	public void setMonthlySalaryKTP(String monthlySalaryKTP) {
+		this.monthlySalaryKTP = monthlySalaryKTP;
+	}
+
+	public String getEmpStatus() {
+		return empStatus;
+	}
+
+	public void setEmpStatus(String empStatus) {
+		this.empStatus = empStatus;
+	}
 
 	// relative in krios
 	@Column(name = "relativeName")
@@ -93,11 +162,22 @@ public class User{
 	
 	@Column(name = "relativesRelationship")
 	private String relativesRelationship;
+	
+	@Column(name = "userStatus")
+	private int userStatus;
+
+	public int getUserStatus() {
+		return userStatus;
+	}
+
+	public void setUserStatus(int userStatus) {
+		this.userStatus = userStatus;
+	}
 
 	// ID Proof details //
 	@Column(name = "adharNumber")
-	private Integer adharNumber;
-	
+	private BigInteger adharNumber;
+
 	@Column(name = "panNumber")
 	private String panNumber;
 
@@ -118,10 +198,10 @@ public class User{
 	private String ifscCode;
 	
 	@Column(name = "pfAccountNumber")
-	private Long pfAccountNumber;
+	private String pfAccountNumber;
 	
 	@Column(name = "uanNumber")
-	private Integer uanNumber;
+	private String uanNumber;
 
 	// Family details //
 	// Father//
@@ -208,11 +288,13 @@ public class User{
 	@Column(name = "schoolName")
 	private String schoolName;
 	
+
 	@Column(name = "periodFrom")
-	private Integer periodFrom;
+	private String periodFrom;
+	
 	
 	@Column(name = "periodTo")
-	private Integer periodTo;
+	private String periodTo;
 	
 	@Column(name = "degreeOrDiploma")
 	private String degreeOrDiploma;
@@ -221,7 +303,7 @@ public class User{
 	private String specialization;
 	
 	@Column(name = "percentage")
-	private Integer percentage;
+	private Float percentage;
 	
 	@Column(name = "classOrDiv")
 	private String classOrDiv;
@@ -231,10 +313,11 @@ public class User{
 	private String collageName;
 	
 	@Column(name = "hscPeriodFrom")
-	private Integer hscPeriodFrom;
+	private String hscPeriodFrom;
+	
 	
 	@Column(name = "hscPeriodTo")
-	private Integer hscPeriodTo;
+	private String hscPeriodTo;
 	
 	@Column(name = "hscDegreeOrDiploma")
 	private String hscDegreeOrDiploma;
@@ -243,7 +326,7 @@ public class User{
 	private String hscSpecialization;
 	
 	@Column(name = "hscPercentage")
-	private Integer hscPercentage;
+	private Float hscPercentage;
 	
 	@Column(name = "hscclassOrDiv")
 	private String hscclassOrDiv;
@@ -252,11 +335,13 @@ public class User{
 	@Column(name = "universityName")
 	private String universityName;
 	
+	
 	@Column(name = "degreePeriodFrom")
-	private Integer degreePeriodFrom;
+	private String degreePeriodFrom;
+	
 	
 	@Column(name = "degreePeriodTo")
-	private Integer degreePeriodTo;
+	private String degreePeriodTo;
 	
 	@Column(name = "degreeDegreeOrDiploma")
 	private String degreeDegreeOrDiploma;
@@ -265,7 +350,7 @@ public class User{
 	private String degreeSpecialization;
 	
 	@Column(name = "degreePercentage")
-	private Integer degreePercentage;
+	private Float degreePercentage;
 	
 	@Column(name = "degreeClassOrDiv")
 	private String degreeClassOrDiv;
@@ -397,7 +482,7 @@ public class User{
 	private String serviceTo;
 	
 	@Column(name = "drawnCTC")
-	private Integer drawnCTC;
+	private Float drawnCTC;
 	
 	@Column(name = "emp_phone")
 	private Long emp_phone;
@@ -412,10 +497,10 @@ public class User{
 	private String seniorDesignation;
 	
 	@Column(name = "currentCTC")
-	private Integer currentCTC;
+	private Float currentCTC;
 	
 	@Column(name = "expectedCTC")
-	private Integer expectedCTC;
+	private Float expectedCTC;
 	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -472,7 +557,7 @@ public class User{
 	// Passport / Visa details //
 	
 	@Column(name = "passportNo")
-	private Integer passportNo;
+	private String passportNo;
 	
 	@Column(name = "issuePlace")
 	private String issuePlace;
@@ -532,24 +617,6 @@ public class User{
 	@Column(name = "clientCompanyName")
 	private String clientCompanyName;
 	
-	@Column(name = "location")
-	private String location;
-	
-	@Column(name = "yearlyPackage")
-	private String yearlyPackage;
-	
-	@Column(name = "monthlySalary")
-	private String monthlySalary;
-	
-	@Column(name = "yearlyPackageKTP")
-	private String yearlyPackageKTP;
-	
-	@Column(name = "monthlySalaryKTP")
-	private String monthlySalaryKTP;
-	
-	@Column(name = "empStatus")
-	private String empStatus;
-	
 	@ManyToMany(targetEntity = Roles.class , cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
 	@JoinTable(name = "userRole" ,
 			   joinColumns = @JoinColumn (name = "usersId" , referencedColumnName = "userid") ,
@@ -566,54 +633,6 @@ public class User{
 
 	public void setRoles(List<Roles> roles) {
 		this.roles = roles;
-	}
-
-	public String getEmpStatus() {
-		return empStatus;
-	}
-
-	public void setEmpStatus(String empStatus) {
-		this.empStatus = empStatus;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	public String getYearlyPackage() {
-		return yearlyPackage;
-	}
-
-	public void setYearlyPackage(String yearlyPackage) {
-		this.yearlyPackage = yearlyPackage;
-	}
-
-	public String getMonthlySalary() {
-		return monthlySalary;
-	}
-
-	public void setMonthlySalary(String monthlySalary) {
-		this.monthlySalary = monthlySalary;
-	}
-
-	public String getYearlyPackageKTP() {
-		return yearlyPackageKTP;
-	}
-
-	public void setYearlyPackageKTP(String yearlyPackageKTP) {
-		this.yearlyPackageKTP = yearlyPackageKTP;
-	}
-
-	public String getMonthlySalaryKTP() {
-		return monthlySalaryKTP;
-	}
-
-	public void setMonthlySalaryKTP(String monthlySalaryKTP) {
-		this.monthlySalaryKTP = monthlySalaryKTP;
 	}
 
 	public String getClientCompanyName() {
@@ -716,12 +735,18 @@ public class User{
 		this.presentAddress = presentAddress;
 	}
 
-	public Integer getTelephone() {
+	
+
+	public String getTelephone() {
 		return telephone;
 	}
 
-	public void setTelephone(Integer telephone) {
+	public void setTelephone(String telephone) {
 		this.telephone = telephone;
+	}
+
+	public void setPermanentTelephone(String permanentTelephone) {
+		this.permanentTelephone = permanentTelephone;
 	}
 
 	public Long getMobile() {
@@ -744,17 +769,15 @@ public class User{
 		return permanentAddress;
 	}
 
+	public String getPermanentTelephone() {
+		return permanentTelephone;
+	}
+
 	public void setPermanentAddress(String permanentAddress) {
 		this.permanentAddress = permanentAddress;
 	}
 
-	public Integer getPermanentTelephone() {
-		return permanentTelephone;
-	}
-
-	public void setPermanentTelephone(Integer permanentTelephone) {
-		this.permanentTelephone = permanentTelephone;
-	}
+	
 
 	public String getRelativeName() {
 		return relativeName;
@@ -780,11 +803,12 @@ public class User{
 		this.relativesRelationship = relativesRelationship;
 	}
 
-	public Integer getAdharNumber() {
+	
+	public BigInteger getAdharNumber() {
 		return adharNumber;
 	}
 
-	public void setAdharNumber(Integer adharNumber) {
+	public void setAdharNumber(BigInteger adharNumber) {
 		this.adharNumber = adharNumber;
 	}
 
@@ -836,19 +860,21 @@ public class User{
 		this.ifscCode = ifscCode;
 	}
 
-	public Long getPfAccountNumber() {
+	
+
+	public String getPfAccountNumber() {
 		return pfAccountNumber;
 	}
 
-	public void setPfAccountNumber(Long pfAccountNumber) {
+	public void setPfAccountNumber(String pfAccountNumber) {
 		this.pfAccountNumber = pfAccountNumber;
 	}
 
-	public Integer getUanNumber() {
+	public String getUanNumber() {
 		return uanNumber;
 	}
 
-	public void setUanNumber(Integer uanNumber) {
+	public void setUanNumber(String uanNumber) {
 		this.uanNumber = uanNumber;
 	}
 
@@ -1052,21 +1078,7 @@ public class User{
 		this.schoolName = schoolName;
 	}
 
-	public Integer getPeriodFrom() {
-		return periodFrom;
-	}
 
-	public void setPeriodFrom(Integer periodFrom) {
-		this.periodFrom = periodFrom;
-	}
-
-	public Integer getPeriodTo() {
-		return periodTo;
-	}
-
-	public void setPeriodTo(Integer periodTo) {
-		this.periodTo = periodTo;
-	}
 
 	public String getDegreeOrDiploma() {
 		return degreeOrDiploma;
@@ -1084,13 +1096,7 @@ public class User{
 		this.specialization = specialization;
 	}
 
-	public Integer getPercentage() {
-		return percentage;
-	}
-
-	public void setPercentage(Integer percentage) {
-		this.percentage = percentage;
-	}
+	
 
 	public String getClassOrDiv() {
 		return classOrDiv;
@@ -1108,21 +1114,8 @@ public class User{
 		this.collageName = collageName;
 	}
 
-	public Integer getHscPeriodFrom() {
-		return hscPeriodFrom;
-	}
+	
 
-	public void setHscPeriodFrom(Integer hscPeriodFrom) {
-		this.hscPeriodFrom = hscPeriodFrom;
-	}
-
-	public Integer getHscPeriodTo() {
-		return hscPeriodTo;
-	}
-
-	public void setHscPeriodTo(Integer hscPeriodTo) {
-		this.hscPeriodTo = hscPeriodTo;
-	}
 
 	public String getHscDegreeOrDiploma() {
 		return hscDegreeOrDiploma;
@@ -1140,13 +1133,7 @@ public class User{
 		this.hscSpecialization = hscSpecialization;
 	}
 
-	public Integer getHscPercentage() {
-		return hscPercentage;
-	}
-
-	public void setHscPercentage(Integer hscPercentage) {
-		this.hscPercentage = hscPercentage;
-	}
+	
 
 	public String getHscclassOrDiv() {
 		return hscclassOrDiv;
@@ -1164,19 +1151,51 @@ public class User{
 		this.universityName = universityName;
 	}
 
-	public Integer getDegreePeriodFrom() {
+	public String getPeriodFrom() {
+		return periodFrom;
+	}
+
+	public void setPeriodFrom(String periodFrom) {
+		this.periodFrom = periodFrom;
+	}
+
+	public String getPeriodTo() {
+		return periodTo;
+	}
+
+	public void setPeriodTo(String periodTo) {
+		this.periodTo = periodTo;
+	}
+
+	public String getHscPeriodFrom() {
+		return hscPeriodFrom;
+	}
+
+	public void setHscPeriodFrom(String hscPeriodFrom) {
+		this.hscPeriodFrom = hscPeriodFrom;
+	}
+
+	public String getHscPeriodTo() {
+		return hscPeriodTo;
+	}
+
+	public void setHscPeriodTo(String hscPeriodTo) {
+		this.hscPeriodTo = hscPeriodTo;
+	}
+
+	public String getDegreePeriodFrom() {
 		return degreePeriodFrom;
 	}
 
-	public void setDegreePeriodFrom(Integer degreePeriodFrom) {
+	public void setDegreePeriodFrom(String degreePeriodFrom) {
 		this.degreePeriodFrom = degreePeriodFrom;
 	}
 
-	public Integer getDegreePeriodTo() {
+	public String getDegreePeriodTo() {
 		return degreePeriodTo;
 	}
 
-	public void setDegreePeriodTo(Integer degreePeriodTo) {
+	public void setDegreePeriodTo(String degreePeriodTo) {
 		this.degreePeriodTo = degreePeriodTo;
 	}
 
@@ -1196,11 +1215,27 @@ public class User{
 		this.degreeSpecialization = degreeSpecialization;
 	}
 
-	public Integer getDegreePercentage() {
+	public Float getPercentage() {
+		return percentage;
+	}
+
+	public void setPercentage(Float percentage) {
+		this.percentage = percentage;
+	}
+
+	public Float getHscPercentage() {
+		return hscPercentage;
+	}
+
+	public void setHscPercentage(Float hscPercentage) {
+		this.hscPercentage = hscPercentage;
+	}
+
+	public Float getDegreePercentage() {
 		return degreePercentage;
 	}
 
-	public void setDegreePercentage(Integer degreePercentage) {
+	public void setDegreePercentage(Float degreePercentage) {
 		this.degreePercentage = degreePercentage;
 	}
 
@@ -1516,13 +1551,7 @@ public class User{
 		this.serviceTo = serviceTo;
 	}
 
-	public Integer getDrawnCTC() {
-		return drawnCTC;
-	}
-
-	public void setDrawnCTC(Integer drawnCTC) {
-		this.drawnCTC = drawnCTC;
-	}
+	
 
 	public Long getEmp_phone() {
 		return emp_phone;
@@ -1556,19 +1585,29 @@ public class User{
 		this.seniorDesignation = seniorDesignation;
 	}
 
-	public Integer getCurrentCTC() {
+	
+	
+	public Float getDrawnCTC() {
+		return drawnCTC;
+	}
+
+	public void setDrawnCTC(Float drawnCTC) {
+		this.drawnCTC = drawnCTC;
+	}
+
+	public Float getCurrentCTC() {
 		return currentCTC;
 	}
 
-	public void setCurrentCTC(Integer currentCTC) {
+	public void setCurrentCTC(Float currentCTC) {
 		this.currentCTC = currentCTC;
 	}
 
-	public Integer getExpectedCTC() {
+	public Float getExpectedCTC() {
 		return expectedCTC;
 	}
 
-	public void setExpectedCTC(Integer expectedCTC) {
+	public void setExpectedCTC(Float expectedCTC) {
 		this.expectedCTC = expectedCTC;
 	}
 
@@ -1692,11 +1731,12 @@ public class User{
 		this.hobbies = hobbies;
 	}
 
-	public Integer getPassportNo() {
+	
+	public String getPassportNo() {
 		return passportNo;
 	}
 
-	public void setPassportNo(Integer passportNo) {
+	public void setPassportNo(String passportNo) {
 		this.passportNo = passportNo;
 	}
 
@@ -1819,5 +1859,65 @@ public class User{
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
 	}
+
+	@Override
+	public String toString() {
+		return "User [userid=" + userid + ", userName=" + userName + ", password=" + password + ", lastName=" + lastName
+				+ ", firstName=" + firstName + ", middleName=" + middleName + ", place=" + place + ", birthDate="
+				+ birthDate + ", maritalStatus=" + maritalStatus + ", gender=" + gender + ", bloodGroup=" + bloodGroup
+				+ ", presentAddress=" + presentAddress + ", telephone=" + telephone + ", mobile=" + mobile + ", email="
+				+ email + ", permanentAddress=" + permanentAddress + ", permanentTelephone=" + permanentTelephone
+				+ ", relativeName=" + relativeName + ", relativePosition=" + relativePosition
+				+ ", relativesRelationship=" + relativesRelationship + ", adharNumber=" + adharNumber + ", panNumber="
+				+ panNumber + ", holderName=" + holderName + ", bankName=" + bankName + ", accountNumber="
+				+ accountNumber + ", branchName=" + branchName + ", ifscCode=" + ifscCode + ", pfAccountNumber="
+				+ pfAccountNumber + ", uanNumber=" + uanNumber + ", fatherName=" + fatherName + ", fatherContactNumber="
+				+ fatherContactNumber + ", fatherEducation=" + fatherEducation + ", fatherOccupation="
+				+ fatherOccupation + ", motherName=" + motherName + ", motherContactNumber=" + motherContactNumber
+				+ ", motherEducation=" + motherEducation + ", motherOccupation=" + motherOccupation + ", wOrHName="
+				+ wOrHName + ", wOrHContactNumber=" + wOrHContactNumber + ", wOrHEducation=" + wOrHEducation
+				+ ", wOrHOccupation=" + wOrHOccupation + ", childrenName=" + childrenName + ", childrenContactNumber="
+				+ childrenContactNumber + ", childrenEducation=" + childrenEducation + ", childrenOccupation="
+				+ childrenOccupation + ", brotherName=" + brotherName + ", brotherContactNumber=" + brotherContactNumber
+				+ ", brotherEducation=" + brotherEducation + ", brotherOccupation=" + brotherOccupation
+				+ ", sisterName=" + sisterName + ", sisterNumber=" + sisterNumber + ", sisterEducation="
+				+ sisterEducation + ", sisterOccupation=" + sisterOccupation + ", schoolName=" + schoolName
+				+ ", periodFrom=" + periodFrom + ", periodTo=" + periodTo + ", degreeOrDiploma=" + degreeOrDiploma
+				+ ", specialization=" + specialization + ", percentage=" + percentage + ", classOrDiv=" + classOrDiv
+				+ ", collageName=" + collageName + ", hscPeriodFrom=" + hscPeriodFrom + ", hscPeriodTo=" + hscPeriodTo
+				+ ", hscDegreeOrDiploma=" + hscDegreeOrDiploma + ", hscSpecialization=" + hscSpecialization
+				+ ", hscPercentage=" + hscPercentage + ", hscclassOrDiv=" + hscclassOrDiv + ", universityName="
+				+ universityName + ", degreePeriodFrom=" + degreePeriodFrom + ", degreePeriodTo=" + degreePeriodTo
+				+ ", degreeDegreeOrDiploma=" + degreeDegreeOrDiploma + ", degreeSpecialization=" + degreeSpecialization
+				+ ", degreePercentage=" + degreePercentage + ", degreeClassOrDiv=" + degreeClassOrDiv
+				+ ", programingLanguages=" + programingLanguages + ", applicationSoftware=" + applicationSoftware
+				+ ", cert_Version=" + cert_Version + ", cert_Date=" + cert_Date + ", futureStudy=" + futureStudy
+				+ ", careerObjective=" + careerObjective + ", m_Read=" + m_Read + ", m_Write=" + m_Write + ", m_Speak="
+				+ m_Speak + ", m_Comprehend=" + m_Comprehend + ", m_MotherTongue=" + m_MotherTongue + ", h_Read="
+				+ h_Read + ", h_Write=" + h_Write + ", h_Speak=" + h_Speak + ", h_Comprehend=" + h_Comprehend
+				+ ", h_MotherTongue=" + h_MotherTongue + ", e_Read=" + e_Read + ", e_Write=" + e_Write + ", e_Speak="
+				+ e_Speak + ", e_Comprehend=" + e_Comprehend + ", e_MotherTongue=" + e_MotherTongue + ", otherLanguage="
+				+ otherLanguage + ", o_Read=" + o_Read + ", o_Write=" + o_Write + ", o_Speak=" + o_Speak
+				+ ", o_Comprehend=" + o_Comprehend + ", o_MotherTongue=" + o_MotherTongue + ", tech_Skill1="
+				+ tech_Skill1 + ", tech_Skill2=" + tech_Skill2 + ", otherSkill1=" + otherSkill1 + ", experience="
+				+ experience + ", relevantExperience=" + relevantExperience + ", employer=" + employer
+				+ ", businessType=" + businessType + ", emp_Address=" + emp_Address + ", reson_Change=" + reson_Change
+				+ ", serviceFrom=" + serviceFrom + ", serviceTo=" + serviceTo + ", drawnCTC=" + drawnCTC
+				+ ", emp_phone=" + emp_phone + ", designation=" + designation + ", seniorName=" + seniorName
+				+ ", seniorDesignation=" + seniorDesignation + ", currentCTC=" + currentCTC + ", expectedCTC="
+				+ expectedCTC + ", joinTime=" + joinTime + ", relocation=" + relocation + ", employerName1="
+				+ employerName1 + ", employerAddress1=" + employerAddress1 + ", employerFrom1=" + employerFrom1
+				+ ", employerTo1=" + employerTo1 + ", employerDesignation1=" + employerDesignation1 + ", lastSalary1="
+				+ lastSalary1 + ", employerName2=" + employerName2 + ", employerAddress2=" + employerAddress2
+				+ ", employerFrom2=" + employerFrom2 + ", employerTo2=" + employerTo2 + ", employerDesignation2="
+				+ employerDesignation2 + ", lastSalary2=" + lastSalary2 + ", hobbies=" + hobbies + ", passportNo="
+				+ passportNo + ", issuePlace=" + issuePlace + ", issueDate=" + issueDate + ", expiryDate=" + expiryDate
+				+ ", nationality=" + nationality + ", statusECNR=" + statusECNR + ", panNo=" + panNo + ", notPassport="
+				+ notPassport + ", app_Place=" + app_Place + ", app_Date=" + app_Date + ", travelledCountries="
+				+ travelledCountries + ", refuseVisa=" + refuseVisa + ", validVisa=" + validVisa + ", isActive="
+				+ isActive + ", currentDate=" + currentDate + ", modifyDate=" + modifyDate + ", clientCompanyName="
+				+ clientCompanyName + "]";
+	}
+	
 	
 }

@@ -117,10 +117,8 @@ public class AdminController {
 	// API to get all employee deatils
 	@RequestMapping(value = "/employeeDetails")
 	public ModelAndView employeeDetails(ModelAndView mv, Model m) {
-		String message = "List Of Users. Check For Update/Delete.";
 		List<User> userList = userservice.getUserList();
 		m.addAttribute("userList", userList);
-		mv.addObject("message", message);
 		return mv;
 	}
 

@@ -1,3 +1,6 @@
+<%@page import="java.time.Month"%>
+<%@page import="java.time.LocalDate"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -37,8 +40,6 @@ table:hover {
 	background-color: #E8E8E8;
 }
 
-
-
 #mydiv {
 	width: 1200px;
 	padding: 10px;
@@ -55,7 +56,23 @@ table:hover {
 	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
 }
 </style>
+
 <body>
+<%
+	String date = ""; 
+	String maxDate = "";
+	LocalDate currentdate = LocalDate.now();
+	int currentMonth = currentdate.getMonthValue();
+	int currentYear = currentdate.getYear();
+	if(String.valueOf(currentMonth).length() == 1){		
+		date = currentYear+"-0"+currentMonth;
+		maxDate = date;
+	}else{
+		date = currentYear+"-"+currentMonth;
+		maxDate = date;
+	}
+%>
+
 	<div>
 		<jsp:include page="./components/userNavbar.jsp" />
 	</div>
@@ -69,25 +86,24 @@ table:hover {
 		<table>
 			<tr>
 				<td align="left">
-				<div>
+					<div>
 						<font color="black"
 							style="font-family: sans-serif; font-size: 15px;">&nbsp&nbsp&nbspUPLOAD
 							ATTENDANCE SHEET</font>
-				</div>
+					</div>
 				</td>
 				<td></td>
 				<td align="right">
 					<!-- Button trigger modal -->
 
 					<div class=" container"
-                    						style="position: absolute; left: 88%;top:0px;  width: 6%;">
-                    						<button   data-toggle="modal" style="    background-color: white;
-                                                                                     border: 0px;"
-                    							data-target="#exampleModal" >
-                    							 <img src="../images/folder.png" style="width: 140%;"></img>
-                    							 </button>
-                    					</div>
-					<!-- Modal -->
+						style="position: absolute; left: 88%; top: 0px; width: 6%;">
+						<button data-toggle="modal"
+							style="background-color: white; border: 0px;"
+							data-target="#exampleModal">
+							<img src="../images/folder.png" style="width: 138%;"></img>
+						</button>
+					</div> <!-- Modal -->
 					<div class="modal fade" id="exampleModal" tabindex="-1"
 						role="dialog" aria-labelledby="exampleModalLabel"
 						aria-hidden="true">
@@ -146,146 +162,28 @@ table:hover {
 		</table>
 	</div>
 	<div style="position: absolute; left: 70px; top: 108px;">
+	<form id="uploadFiles" name="uploadFiles"
+							method="post" action="/uploadSheet" encType="multipart/form-data">
 		<table class="table table-hover" id="mydiv">
 			<tbody>
 				<tr>
-					<th scope="row">1</th>
-					<td colspan="2" align="center">January</td>
-					<td align="center"><form id="uploadFiles" name="uploadFiles" method="post"
-							action="/uploadSheet" encType="multipart/form-data">
+					<th colspan="2" align="center" style="padding-top:16px">
+						<p> Date <input type="month" name="sheetOf" value="<%=date %>" max="<%=maxDate %>"/> </p>
+					</th>
+					<th align="center">
 							<input type="file" name="files" multiple required />
-							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
-						</form></td>
-				</tr>
-
-
-				<tr>
-					<th scope="row">2</th>
-					<td colspan="2" align="center">February</td>
-					<td align="center"><form id="uploadFiles" name="uploadFiles" method="post"
-							action="/uploadSheet" encType="multipart/form-data">
-							<input type="file" name="files" multiple required />
-							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
-						</form></td>
-				</tr>
-
-
-				<tr>
-					<th scope="row">3</th>
-					<td colspan="2" align="center">March</td>
-					<td align="center"><form id="uploadFiles" name="uploadFiles" method="post"
-							action="/uploadSheet" encType="multipart/form-data">
-							<input type="file" name="files" multiple required />
-							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
-						</form></td>
-				</tr>
-
-				<tr>
-					<th scope="row">4</th>
-					<td colspan="2" align="center">April</td>
-					<td align="center"><form id="uploadFiles" name="uploadFiles" method="post"
-							action="/uploadSheet" encType="multipart/form-data">
-							<input type="file" name="files" multiple required />
-							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
-						</form></td>
-				</tr>
-
-				<tr>
-					<th scope="row">5</th>
-					<td colspan="2" align="center">May</td>
-					<td align="center"><form id="uploadFiles" name="uploadFiles" method="post"
-							action="/uploadSheet" encType="multipart/form-data">
-							<input type="file" name="files" multiple required />
-							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
-						</form></td>
-				</tr>
-
-				<tr>
-					<th scope="row">6</th>
-					<td colspan="2" align="center">June</td>
-					<td align="center"><form id="uploadFiles" name="uploadFiles" method="post"
-							action="/uploadSheet" encType="multipart/form-data">
-							<input type="file" name="files" multiple required />
-							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
-						</form></td>
-				</tr>
-
-				<tr>
-					<th scope="row">7</th>
-					<td colspan="2" align="center">July</td>
-					<td align="center"><form id="uploadFiles" name="uploadFiles" method="post"
-							action="/uploadSheet" encType="multipart/form-data">
-							<input type="file" name="files" multiple required />
-							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
-						</form></td>
-				</tr>
-
-				<tr>
-
-					<th scope="row">8</th>
-					<td colspan="2" align="center">August</td>
-					<td align="center"><form id="uploadFiles" name="uploadFiles" method="post"
-							action="/uploadSheet" encType="multipart/form-data">
-							<input type="file" name="files" multiple required />
-							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
-						</form></td>
-				</tr>
-
-				<tr>
-					<th scope="row">9</th>
-					<td colspan="2" align="center">September</td>
-					<td align="center"><form id="uploadFiles" name="uploadFiles" method="post"
-							action="/uploadSheet" encType="multipart/form-data">
-							<input type="file" name="files" multiple required />
-							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
-						</form></td>
-				</tr>
-
-				<tr>
-					<th scope="row">10</th>
-					<td colspan="2" align="center">October</td>
-					<td align="center"><form id="uploadFiles" name="uploadFiles" method="post"
-							action="/uploadSheet" encType="multipart/form-data">
-							<input type="file" name="files" multiple required />
-							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
-						</form></td>
-				</tr>
-
-
-
-				<tr>
-					<th scope="row">11</th>
-					<td colspan="2" align="center">November</td>
-					<td align="center"><form id="uploadFiles" name="uploadFiles" method="post"
-							action="/uploadSheet" encType="multipart/form-data">
-							<input type="file" name="files" multiple required />
-							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
-						</form></td>
-				</tr>
-
-				<tr>
-					<th scope="row">12</th>
-					<td colspan="2" align="center">December</td>
-					<td align="center"><form id="uploadFiles" name="uploadFiles" method="post"
-							action="/uploadSheet" encType="multipart/form-data">
-							<input type="file" name="files" multiple required />
-							<p style="color: red;">(upload only Excel, xlsx type)</p></td>
-					<td align="center"><button type="submit" class="btn col-md-6" style="padding: 1px 4px;background-color:green;color:white;width:78%;border-radius:3px; margin-left: 18%;box-shadow: 0px 2px 2px gray;"> <span class="material-icons " style="font-size: 34px;float:left;">cloud_upload</span><span style="font-size:16px;top:7px;left:46px;position:absolute;">Upload</span></button>
-						</form></td>
+							<p style="color: red;">(upload only Excel, xlsx type)</p></th>
+					<th align="center"><button type="submit" class="btn col-md-6"
+							style="padding: 1px 4px; background-color: green; color: white; width: 100%; border-radius: 3px; margin-left: 1%; box-shadow: 0px 2px 2px gray;">
+							<span class="material-icons "
+								style="font-size: 34px; float: left;">cloud_upload</span><span
+								style="font-size: 16px; top: 7px; left: 46px; position: absolute;">Upload</span>
+						</button>
+					</th>
 				</tr>
 			</tbody>
 		</table>
+		</form>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
