@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-import javax.mail.Flags.Flag;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -66,7 +65,7 @@ public class UserController {
 		roles = roleService.fetchRoleList();
 		m.addAttribute("roles", roles);
 		mv = new ModelAndView("userLogin");
-//		sendAutoMail();
+		//sendAutoMail();
 		return mv;
 
 	}
@@ -97,33 +96,53 @@ public class UserController {
 				if (roleName.equals("Admin")) {
 					session.setAttribute("userId", user.getUserid());
 					session.setAttribute("firstName", user.getFirstName());
+					session.setAttribute("loginRole", roleName);
 					sucessmessage = "Login Sucessfull!";
 					m.addAttribute("sucessmessage", sucessmessage);
-					mv = new ModelAndView("hrHomepage");
+					if(user.getResetPassword() == 0) {
+						mv = new ModelAndView("resetPasswordForm");
+					}else {
+						mv = new ModelAndView("hrHomepage");
+					}
 					m.addAttribute(session);
 				} else if (roleName.equals("Finance")) {
 					session.setAttribute("userId", user.getUserid());
 					session.setAttribute("firstName", user.getFirstName());
+					session.setAttribute("loginRole", roleName);
 					sucessmessage = "Login Sucessfull!";
 					m.addAttribute("sucessmessage", sucessmessage);
-					mv = new ModelAndView("financePanel");
+					if(user.getResetPassword() == 0) {
+						mv = new ModelAndView("resetPasswordForm");
+					}else {
+						mv = new ModelAndView("financePanel");
+					}
 					m.addAttribute(session);
 				} else if (roleName.equals("Employee")) {
 					session.setAttribute("userId", user.getUserid());
 					session.setAttribute("firstName", user.getFirstName());
 					session.setAttribute("companyName", user.getClientCompanyName());
+					session.setAttribute("loginRole", roleName);
 					sucessmessage = "Login Sucessfull!";
 					m.addAttribute("sucessmessage", sucessmessage);
-					mv = new ModelAndView("userDashboard");
+					if(user.getResetPassword() == 0) {
+						mv = new ModelAndView("resetPasswordForm");
+					}else {
+						mv = new ModelAndView("userDashboard");
+					}
 					m.addAttribute(session);
 				}
 			} else if (roleName.equals("Employee")) {
 				session.setAttribute("userId", user.getUserid());
 				session.setAttribute("firstName", user.getFirstName());
 				session.setAttribute("companyName", user.getClientCompanyName());
+				session.setAttribute("loginRole", roleName);
 				sucessmessage = "Login Sucessfull!";
 				m.addAttribute("sucessmessage", sucessmessage);
-				mv = new ModelAndView("userDashboard");
+				if(user.getResetPassword() == 0) {
+					mv = new ModelAndView("resetPasswordForm");
+				}else {
+		 			mv = new ModelAndView("userDashboard");
+				}
 				m.addAttribute(session);
 			} else {
 				wrongmessage = "Credential Failed";
@@ -138,10 +157,49 @@ public class UserController {
 			viewHomePage(mv, m);
 			mv = new ModelAndView("userLogin");
 		}
-
 		return mv;
 	}
 
+	@RequestMapping(value = "/resetPasswordForm")
+	public ModelAndView resetPasswordForm(ModelAndView mv) {
+		return mv;
+	}
+	
+	@PostMapping(value = "/resetPassword")
+	public ModelAndView resetPassword(ModelAndView mv , Model model , @RequestParam(name = "oldPassword") String oldPassword , 
+			@RequestParam(name = "newPassword") String newPassword ,HttpServletRequest request) {
+		int userId = (int) request.getSession().getAttribute("userId");
+		String roleName = (String) request.getSession().getAttribute("loginRole");
+		String message = "";
+		int result = userservice.resetPasswordRequest(userId, oldPassword);
+		if(result > 0) {
+				int updateResult = userservice.updatePassword(userId, newPassword);
+				if(updateResult > 0) {
+					if(roleName.equals("Admin")) {
+						mv = new ModelAndView("hrHomepage");	
+						message = "Password Updated Successfully..!";
+					}else if(roleName.equals("Employee")){
+						mv = new ModelAndView("userDashboard");	
+						message = "Password Updated Successfully..!";
+					}else if(roleName.equals("Finance")) {
+						mv = new ModelAndView("financePanel");
+						message = "Password Updated Successfully..!";
+					}else {
+						mv = new ModelAndView("resetPasswordForm");
+						message = "Failed To Update Password..!";
+					}
+				}else {
+					message = "Failed To Change Password..!";
+					mv = new ModelAndView("resetPasswordForm");
+				}
+		}else {
+			message = "Failed To Change Password..!";
+			mv = new ModelAndView("resetPasswordForm");
+		}
+		model.addAttribute("message", message);
+		return mv;
+	}
+	
 	// API to logout from sessions
 	@RequestMapping(value = "/logout")
 	public ModelAndView logout(ModelAndView mv, Model m, HttpServletRequest request) {
@@ -171,21 +229,28 @@ public class UserController {
 	@RequestMapping(value = "/saveUser")
 	public ModelAndView registerStudent(ModelAndView mv,Model m, @ModelAttribute("user") User user,
 			@ModelAttribute("rolesBean") RolesBean rolesBean) throws Exception {
-		System.out.println("in save user api");
-		rolesBean.setRoleName("Employee");
-
-		String message = "<html><body>Hello " + user.getFirstName() + " " + user.getLastName()
-				+ ",  <br><br>Welcome to Krios Info Solutions Pvt Ltd, Pune  !!<br><br>"
-				+ "Congratulations on being part of our dynamic team!  The entire office welcomes you and we hope to have a long and successful journey together. <br><br>"
-				+ "As discussed with you, please fill all your data in the employement form on our krios portal "
-				+ "and upload mention documents.<br><br>Krios Portal Link : www.kriosportal.com<br><br>"
-				+ "---------------------------------<br>" + " Login Details<br>"
-				+ "---------------------------------<br>" + " UserName : " + user.getUserName() + "<br> Password : "
-				+ user.getPassword() + "<br>----------------------------------"
-				+ "<br><br> Please feel free to ask if you have any questions or queries.  <br><br> Thanks & Regards,<br> HR Executive";
-		userservice.sendEmail(user.getEmail(), message, "Krios Employement Form");
-		userservice.saveUser(user, rolesBean);
-		String message2 = "user added sucesfully and mail sent";
+		int result = userservice.checkEmailIdExitsOrNot(user.getEmail());
+		String message2;
+		if(result > 0) {
+			System.out.println("Email Id Already Exists..!");
+			message2 = "EmailId Already Exists..!";
+		}else {
+			rolesBean.setRoleName("Employee");
+			String message = "<html><body>Hello " + user.getFirstName() + " " + user.getLastName()
+					+ ",  <br><br>Welcome to Krios Info Solutions Pvt Ltd, Pune  !!<br><br>"
+					+ "Congratulations on being part of our dynamic team!  The entire office welcomes you and we hope to have a long and successful journey together. <br><br>"
+					+ "As discussed with you, please fill all your data in the employement form on our krios portal "
+					+ "and upload mention documents.<br><br>Krios Portal Link : www.kriosportal.com<br><br>"
+					+ "---------------------------------<br>" + " Login Details<br>"
+					+ "---------------------------------<br>" + " UserName : " + user.getUserName() + "<br> Password : "
+					+ user.getPassword() + "<br>----------------------------------"
+					+ "<br><br> Please feel free to ask if you have any questions or queries.  <br><br> Thanks & Regards,<br> HR Executive";
+			userservice.sendEmail(user.getEmail(), message, "Krios Employement Form");
+			user.setResetPassword(0);
+			userservice.saveUser(user, rolesBean);
+			message2 = "user added sucesfully and mail sent";
+			
+		}
 		m.addAttribute("message2", message2);
 		mv = new ModelAndView("addUserForm");
 		return mv;
@@ -195,22 +260,16 @@ public class UserController {
 	@RequestMapping(value = "/editUser")
 	public ModelAndView editUser(ModelAndView mv, Model m, HttpServletRequest request) {
 		int userId = (int) request.getSession().getAttribute("userId");
-		System.out.println(userId);
-		Boolean statusBoolean=true;
 		UserBean user = userservice.getById(userId);
 		mv = new ModelAndView("userForm2");
 		m.addAttribute("user", user);
-		if(user.getUserStatus() < 2)
-			statusBoolean=false;
-		 m.addAttribute("status", statusBoolean);
 		return mv;
 	}
 
 	// API to update user
 	@PostMapping(value = "/updateUser")
-	public ModelAndView updateUser(@ModelAttribute("user") User user, ModelAndView mv, HttpServletRequest request,Model m)
+	public ModelAndView updateUser(@ModelAttribute("user") User user, ModelAndView mv, HttpServletRequest request)
 			throws NumberFormatException, IOException {
-		Boolean statusBoolean=true;
 		int userId = (int) request.getSession().getAttribute("userId");
 
 		UserBean user2 = userservice.getById(userId);
@@ -219,19 +278,10 @@ public class UserController {
 		user.setPassword(user3.getPassword());
 		user.setUserid(userId);
 		List<Roles> userRoles = roleService.getUserRoles(userId);
-		user.setRoles(userRoles);	
-		System.out.println("Flag : "+user3.getUserStatus());
-		if(user3.getUserStatus() < 2)
-			statusBoolean=false;
-		System.out.println(statusBoolean);
-		  user.setUserStatus(user3.getUserStatus()+1);
-		  userservice.updateUser(user);
-		 m.addAttribute("status", statusBoolean);
-		  UserBean user4 = userservice.getById(userId);
-			mv = new ModelAndView("userForm2");
-			m.addAttribute("user", user4);
-		  mv = new ModelAndView("userForm2");
-		 return mv;
+		user.setRoles(userRoles);
+		userservice.updateUser(user);
+		mv = new ModelAndView("userForm2");
+		return mv;
 	}
 
 	@GetMapping("/export")

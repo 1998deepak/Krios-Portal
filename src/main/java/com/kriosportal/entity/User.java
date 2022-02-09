@@ -623,8 +623,18 @@ public class User{
 			   inverseJoinColumns = @JoinColumn(name = "roleId" , referencedColumnName = "roleId"))
 	private List<Roles> roles;
 	
+	private int resetPassword;
+	
 	public Integer getUserid() {
 		return userid;
+	}
+
+	public int getResetPassword() {
+		return resetPassword;
+	}
+
+	public void setResetPassword(int resetPassword) {
+		this.resetPassword = resetPassword;
 	}
 
 	public List<Roles> getRoles() {

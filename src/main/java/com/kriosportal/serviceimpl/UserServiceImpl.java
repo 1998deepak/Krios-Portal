@@ -242,14 +242,14 @@ public class UserServiceImpl implements UserService {
 		});
 
 		session.setDebug(true);
-		
+
 		String[] cc = { "yogesh.daspute@kriosispl.com" };
 		// replace lastDayOfMonth with todays date (eg : 24 ) for testing
 		if (lastDayOfMonth == todaysDate) {
 			for (User user : users) {
 				if (user.getClientCompanyName() != null) {
 					String mailTo = user.getEmail();
-					
+
 					// Step 2 : compose the message [text,multi media]
 					MimeMessage m = new MimeMessage(session);
 
@@ -264,21 +264,19 @@ public class UserServiceImpl implements UserService {
 						m.addRecipient(Message.RecipientType.TO, new InternetAddress(mailTo));
 
 						// adding subject to message
-						String subject=user.getClientCompanyName()+"Time Sheet_"+month+year;
+						String subject = user.getClientCompanyName() + "Time Sheet_" + month + year;
 						m.setSubject(subject);
 
 						// adding text to message
 						// m.setText(message);
-						String body = "<html><body>Dear " + user.getFirstName() + " ,<br><br>" + "Request you to submit "
-								+ month +" "+ year +" "+user.getClientCompanyName()+" "+"timesheet to us for further processing." + "<br><br>Feel free to reach us, in case of any queries.<br><br>Thanks & Regards,"
-								+ "<br> Thanks & Regards,\r\n"
-								+ "Hiral Mehta\r\n"
-								+ "Accounts and Finance Head\r\n"
-								+ "________________________________________\r\n"
-								+ " \r\n"
+						String body = "<html><body>Dear " + user.getFirstName() + " ,<br><br>"
+								+ "Request you to submit " + month + " " + year + " " + user.getClientCompanyName()
+								+ " " + "timesheet to us for further processing."
+								+ "<br><br>Feel free to reach us, in case of any queries.<br><br>Thanks & Regards,"
+								+ "<br> Thanks & Regards,\r\n" + "Hiral Mehta\r\n" + "Accounts and Finance Head\r\n"
+								+ "________________________________________\r\n" + " \r\n"
 								+ "KRIOS Info Solutions Pvt. Ltd.\r\n"
-								+ "B-604, Teerth Technospace, Baner, Pune 411045\r\n"
-								+ "Mobile: +91 9175999751\r\n"
+								+ "B-604, Teerth Technospace, Baner, Pune 411045\r\n" + "Mobile: +91 9175999751\r\n"
 								+ "Email: hiral.mehta@kriosispl.com | http://kriosispl.com</body></html>";
 						m.setContent(body, "text/html");
 
@@ -297,76 +295,72 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 	}
-	
-	public boolean resetPasswordEamil(String subject,String message,String to) {
+
+	public boolean resetPasswordEamil(String subject, String message, String to) {
 		// TODO Auto-generated method stub
-		
-		boolean f=false;
-		
-		String from=hrUsername;
-		//Variable for gmail
-		String host="smtp.gmail.com";
-		
-		//get the system properties
+
+		boolean f = false;
+
+		String from = hrUsername;
+		// Variable for gmail
+		String host = "smtp.gmail.com";
+
+		// get the system properties
 		Properties properties = System.getProperties();
-		System.out.println("PROPERTIES "+properties);
-		
-		//setting important information to properties object
-		
-		//host set
+		System.out.println("PROPERTIES " + properties);
+
+		// setting important information to properties object
+
+		// host set
 		properties.put("mail.smtp.host", host);
-		properties.put("mail.smtp.port","465");
-		properties.put("mail.smtp.ssl.enable","true");
-		properties.put("mail.smtp.auth","true");
-		
-		//Step 1: to get the session object..
-		Session session=Session.getInstance(properties, new Authenticator() {
+		properties.put("mail.smtp.port", "465");
+		properties.put("mail.smtp.ssl.enable", "true");
+		properties.put("mail.smtp.auth", "true");
+
+		// Step 1: to get the session object..
+		Session session = Session.getInstance(properties, new Authenticator() {
 			@Override
-			protected PasswordAuthentication getPasswordAuthentication() {				
-				return new PasswordAuthentication(hrUsername,hrpassword);
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(hrUsername, hrpassword);
 			}
-			
-			
-			
+
 		});
-		
+
 		session.setDebug(true);
-		
-		//Step 2 : compose the message [text,multi media]
+
+		// Step 2 : compose the message [text,multi media]
 		MimeMessage m = new MimeMessage(session);
-		
+
 		try {
-		
-		//from email
-		m.setFrom(from);
-		
-		//adding recipient to message
-		m.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-		
-		//adding subject to message
-		m.setSubject(subject);
-	
-		
-		//adding text to message
-		//m.setText(message);
-		m.setContent(message,"text/html");
-		
-		//send 
-		
-		//Step 3 : send the message using Transport class
-		Transport.send(m);
-		
-		System.out.println("Sent success...................");
-		f=true;
-		
-		
-		}catch (Exception e) {
+
+			// from email
+			m.setFrom(from);
+
+			// adding recipient to message
+			m.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+
+			// adding subject to message
+			m.setSubject(subject);
+
+			// adding text to message
+			// m.setText(message);
+			m.setContent(message, "text/html");
+
+			// send
+
+			// Step 3 : send the message using Transport class
+			Transport.send(m);
+
+			System.out.println("Sent success...................");
+			f = true;
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return f;
-			
+
 	}
-	
+
 	public void sendIntimateMail(String to, String body, String topic) {
 		System.out.println("sending..........!");
 		String from = financeUsername;
@@ -423,5 +417,38 @@ public class UserServiceImpl implements UserService {
 		}
 
 	}
-	
+
+	@Override
+	public int checkEmailIdExitsOrNot(String emailId) {
+		int result;
+		Optional<Integer> data = userRepo.checkEmailIdExitsOrNot(emailId);
+		if (data.isPresent()) {
+			result = 1;
+		} else
+			result = 0;
+		return result;
+	}
+
+	@Override
+	public int resetPasswordRequest(int userId, String oldPassword) {
+		int result;
+		Optional<Integer> data = userRepo.resetPassword(userId, oldPassword);
+		if (data.isPresent()) {
+			result = 1;
+		} else
+			result = 0;
+		return result;
+	}
+
+	@Override
+	public int updatePassword(int userId, String newPassword) {
+		int result;
+		Optional<Integer> data = userRepo.updatePassword(userId, newPassword);
+		if (data.isPresent()) {
+			result = 1;
+		} else
+			result = 0;
+		return result;
+	}
+
 }

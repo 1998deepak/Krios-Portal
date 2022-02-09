@@ -176,6 +176,7 @@ public class UserMapper {
 		userBean.setEmpStatus(user.getEmpStatus());
 		userBean.setRoleName(getRole(user).getRoleName());
 		userBean.setUserStatus(user.getUserStatus());
+		userBean.setResetPassword(user.getResetPassword());
 		return userBean;
 	}
 	
@@ -341,6 +342,7 @@ public class UserMapper {
 		user.setMonthlySalaryKTP(userBean.getMonthlySalaryKTP());
 		user.setEmpStatus(userBean.getEmpStatus());
 		user.setUserStatus(userBean.getUserStatus());
+		user.setResetPassword(userBean.getResetPassword());
 		return user; 
 	}
 	

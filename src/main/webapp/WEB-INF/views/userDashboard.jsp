@@ -32,10 +32,12 @@
     // background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("./images/userdashboard.jpg");
     background-size: cover;
     margin: 0;
+    background-color:#f5efef;
     padding: 0;
     width: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
+
   }
 
   .document-center {
@@ -223,7 +225,7 @@ in order for the aspect ratio trick to work*/
     height: 123px;
     width: 223%;
     margin-left: 383px;
-    background-color: #dadada6b;
+    background-color: #dadada;
     position: relative;
   }
 
@@ -235,7 +237,7 @@ in order for the aspect ratio trick to work*/
   }
 
   .div1 {
-    width: 165px;
+    width: 158px;
     height: 112px;
     display: block;
     cursor: pointer;
@@ -254,7 +256,7 @@ in order for the aspect ratio trick to work*/
   }
 </style>
 
-<body>
+<body >
   <div>
     <jsp:include page="./components/userNavbar.jsp" />
   </div>
@@ -269,20 +271,20 @@ in order for the aspect ratio trick to work*/
       <div class="carousel" id="carousel-1" auto-scroll="7000" style="width:180%;box-shadow: 0px 10px 8px -2px #d5cfcf;">
         <!--The uppermost screen will appear first. This is due to JavaScript-->
         <section class="carousel-screen">
-          <img src="https://www.w3schools.com/bootstrap/chicago.jpg" alt="Chicago Band" />
+          <img src="../images/slide1.jpg" alt="slide1" />
           <section class="text-container">
-
-            <p>Thank you, Chicago!</p>
+            <p>Welcome</p>
+            <p>To Krios Info Solution Pvt. Ltd. !</p>
           </section>
         </section>
         <section class="carousel-screen">
-          <img src="https://www.w3schools.com/bootstrap/ny.jpg" alt="New York" />
+          <img src="../images/slide2.jpg" alt="slide2" />
           <section class="text-container">
-            <p>We love the Big Apple!</p>
+            <p>Office Culture!</p>
           </section>
         </section>
         <section class="carousel-screen">
-          <img src="https://www.w3schools.com/bootstrap/la.jpg" alt="Los Angeles" />
+          <img src="../images/slide4.jpg" alt="Los Angeles" />
           <section class="text-container">
             <p>LA is always so much fun!</p>
           </section>
@@ -305,13 +307,13 @@ in order for the aspect ratio trick to work*/
     <div class="col-md-2">
 
       <div class=" sidecontainer" style="box-shadow: 0px 10px 8px -2px #d5cfcf;">
-        <img src="../images/profileimg.jpg" alt="Avatar" style="width:180px;padding:2%;border-radius:14px;">
-        <b style="font-size: 21px;">From CEO'S Desk</b>
+        <img src="../images/profileimg.jpg" alt="Avatar" style="width:155px;padding:2%;border-radius:14px;">
+        <b style="font-size: 21px;">From CFO'S Desk</b>
       </div>
       <br>
       <div class="  subcontainer">
-        <img src="../images/landingimg.png" alt="Avatar" style="width:221px;   box-shadow: 0px 10px 8px -2px #d5cfcf;">&nbsp;&nbsp;&nbsp;&nbsp;
-        <img src="../images/landingcolimg.png" alt="Avatar" style="width:221px;   box-shadow: 0px 10px 8px -2px #d5cfcf;">
+        <img src="../images/landingimg.png" alt="Avatar" style="width:210px;   box-shadow: 0px 10px 8px -2px #d5cfcf;">&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="../images/landingcolimg.png" alt="Avatar" style="width:210px;   box-shadow: 0px 10px 8px -2px #d5cfcf;">
       </div>
 
     </div>
@@ -348,25 +350,29 @@ in order for the aspect ratio trick to work*/
           <center>Setting</center>
         </b>
       </div>
+
+
     </div>
-    <div style="position: relative;float: right; margin-right: 36px;margin-top:26px; width: 300px;">
-      <p style="border-bottom: 4px solid skyblue;font-size:20px"><b>Notification</b></p>
-      <p style="margin-left:4px;"><b style="font-size:12px">HR Announcement: </b>&nbsp;Update nominee name in provident fund</p>
-      <p style="margin-left:4px;"><b style="font-size:12px">Upcoming Event: </b>&nbsp;Update nominee name in provident fund</p>
-      <p style="margin-left:4px;"><b style="font-size:12px">Employee: </b>&nbsp;Update nominee name in provident fund</p>
+    <div style="position: relative;float: right; margin-right: 36px;margin-top:8px; width: 300px;        box-shadow: 0 0 10px #fff;">
+     <div style="position: relative;float: right;margin-right: 198px;border-color:1px solid gray;width: 261px;">
+               <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d1891.1169799584145!2d73.76478998288472!3d18.56348807126294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e0!4m0!4m5!1s0x3bc2bf0c7b04b4d3%3A0xabecfc83d300c825!2sKrios%20Info%20Solutions%20Pvt.%20Ltd.%2C%20B-204%2C%20Teerth%20Technospace%20Mumbai%20Bangalore%20Highway%2C%20adjoining%20Mercedes%20Benz%20Showroom%2C%20Baner%2C%20Pune%2C%20Maharashtra%20411045!3m2!1d18.5635364!2d73.7659487!5e0!3m2!1sen!2sin!4v1643880036522!5m2!1sen!2sin" width="470" height="271" style="border:0;border-radius:3px;    box-shadow: 0px 10px 8px -2px #d5cfcf;" allowfullscreen="" ></iframe>
+          </div>
     </div>
     <div style="position: relative;float: right; margin-left: 2%;margin-top:16px; width: 300px;float:left">
-      <p style="border-bottom: 4px solid skyblue;font-size:20px"><b>My Links</b></p>
-      <p style="margin-left:4px;font-size:12px"><a href="#" style="text-decoration:none"><b>HR Announcement </b></a></p>
-      <p style="margin-left:4px;font-size:12px"><a href="#" style="text-decoration:none"><b>Upcoming Event</b> </a></p>
-      <p style="margin-left:4px;font-size:12px"><a href="#" style="text-decoration:none"><b>Employee</b> </a></p>
+      <p style="border-bottom: 4px solid skyblue;font-size:20px"><b>Pune</b></p>
+      <p style="margin-left:4px;font-size:12px"><b  >B-204, C-206, Teerth Technospace, </b></p>
+      <p style="margin-left:4px;font-size:12px"><b  >Mumbai Bangalore Highway, Adjoining Mercedes Benz Showroom,Baner,</b></p>
+      <p style="margin-left:4px;font-size:12px"><b  >Pune- 411045, India.</b></p>
     </div>
-    <div style="position: relative; margin-left: 19%;margin-top:16px; width: 300px;float:left">
-      <p style="border-bottom: 4px solid skyblue;font-size:20px"><b>My Documents</b></p>
-      <p style="margin-left:4px;font-size:12px"><a href="#" style="text-decoration:none"><b>Profile Image </b></a></p>
-      <p style="margin-left:4px;font-size:12px"><a href="#" style="text-decoration:none"><b>Adhar Card</b> </a></p>
-      <p style="margin-left:4px;font-size:12px"><a href="#" style="text-decoration:none"><b>More</b> </a></p>
+    <div style="position: relative; margin-left: 17%;margin-top:16px; width: 300px;float:left">
+      <p style="border-bottom: 4px solid skyblue;font-size:20px"><b>Nashik</b></p>
+      <p style="margin-left:4px;font-size:12px"><b  >9, Shubham Park, Near Hotel Kopa Kabana, </b></p>
+      <p style="margin-left:4px;font-size:12px"><b  >New Pandit Colony,</b> </p>
+      <p style="margin-left:4px;font-size:12px"><b  >Nashik-422002, India</b></p>
     </div>
+
+
+
   </div>
   <script>
     //Right Arrow & Left Arrow

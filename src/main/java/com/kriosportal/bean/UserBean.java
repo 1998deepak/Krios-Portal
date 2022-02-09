@@ -76,10 +76,21 @@ public class UserBean {
 	@Column(name = "empStatus")
 	private String empStatus;
 	
+	private int resetPassword;
+	
 	// relative in krios
 
 	public String getLocation() {
 		return location;
+	}
+
+	
+	public int getResetPassword() {
+		return resetPassword;
+	}
+
+	public void setResetPassword(int resetPassword) {
+		this.resetPassword = resetPassword;
 	}
 
 	public void setLocation(String location) {
